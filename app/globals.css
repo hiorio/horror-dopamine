@@ -157,11 +157,41 @@ h1 {
 }
 
 h1 span {
+  position: relative;
   display: block;
 }
 
+.distressed-title span {
+  background:
+    radial-gradient(circle at 13% 24%, rgba(7, 7, 6, 0.92) 0 0.7px, transparent 1.2px) 0 0 / 9px 11px,
+    radial-gradient(circle at 72% 61%, rgba(7, 7, 6, 0.72) 0 0.8px, transparent 1.4px) 0 0 / 13px 15px,
+    radial-gradient(circle at 41% 82%, rgba(7, 7, 6, 0.54) 0 0.6px, transparent 1px) 0 0 / 7px 17px,
+    linear-gradient(var(--title-color), var(--title-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: contrast(1.1);
+  text-shadow: 1px 0 rgba(233, 228, 216, 0.08), -1px 0 rgba(206, 37, 31, 0.09);
+}
+
+.distressed-title span::after {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  color: var(--title-color);
+  content: attr(data-text);
+  clip-path: polygon(0 23%, 100% 21%, 100% 25%, 0 27%, 0 67%, 100% 65%, 100% 69%, 0 71%);
+  opacity: 0.2;
+  pointer-events: none;
+  transform: translateX(-1.5px);
+}
+
+.title-bone {
+  --title-color: var(--bone);
+}
+
 .title-red {
-  color: var(--red-bright);
+  --title-color: var(--red-bright);
 }
 
 .hero-description {
@@ -349,6 +379,7 @@ h2 {
   font-size: 25px;
   font-weight: 760;
   letter-spacing: -0.045em;
+  text-shadow: 0.6px 0 rgba(240, 68, 56, 0.35), -0.4px 0 rgba(233, 228, 216, 0.2);
 }
 
 .section-heading > p {
@@ -566,6 +597,7 @@ h3 {
   font-weight: 770;
   letter-spacing: -0.055em;
   line-height: 1.12;
+  text-shadow: 0.7px 0 rgba(240, 68, 56, 0.3), -0.5px 0 rgba(233, 228, 216, 0.18);
 }
 
 .featured-copy p {

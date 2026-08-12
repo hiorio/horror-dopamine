@@ -55,9 +55,9 @@ export default function Home() {
             <span>CHANNEL NODE 01</span>
             <span>HORROR / KR</span>
           </div>
-          <h1 id="page-title">
-            <span>공포</span>
-            <span className="title-red">도파민</span>
+          <h1 id="page-title" className="distressed-title">
+            <span className="title-bone" data-text="공포">공포</span>
+            <span className="title-red" data-text="도파민">도파민</span>
           </h1>
           <p className="hero-description">
             평범한 일상에 침투하는 이상한 기록들.
