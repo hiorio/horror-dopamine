@@ -13,8 +13,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Link Flower",
-  description: "유튜브, 인스타그램, 틱톡으로 이어지는 나만의 링크 허브.",
+  title: {
+    default: "공포도파민 — Horror Dopamine",
+    template: "%s | 공포도파민",
+  },
+  description: "유튜브, 인스타그램, 틱톡으로 이어지는 공포도파민 공식 채널 노드.",
+  openGraph: {
+    title: "공포도파민 — Horror Dopamine",
+    description: "평범한 일상에 침투하는 이상한 기록들. 모든 공포도파민 채널을 한곳에서 만나보세요.",
+    type: "website",
+    locale: "ko_KR",
+  },
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",

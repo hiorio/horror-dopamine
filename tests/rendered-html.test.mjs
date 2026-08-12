@@ -29,10 +29,14 @@ test("server-renders the link hub", async () => {
 
   const html = await response.text();
   assert.match(html, /<html[^>]*lang="ko"/i);
-  assert.match(html, /<title>Link Flower[^<]*<\/title>/i);
-  assert.match(html, /LINK FLOWER/);
+  assert.match(html, /<title>공포도파민[^<]*<\/title>/i);
+  assert.match(html, /공포도파민/);
+  assert.match(html, /CHANNEL NODE 01/);
   assert.match(html, /YouTube/);
   assert.match(html, /Instagram/);
   assert.match(html, /TikTok/);
+  assert.match(html, /@horrordopamine/);
+  assert.match(html, /@horror_dopamine/);
+  assert.match(html, /인기 기록/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
 });
