@@ -37,6 +37,7 @@ dev.err.log
 .vercel
 
 /dist/
+*.tsbuildinfo
 /.wrangler/
 /outputs/
 /work/
