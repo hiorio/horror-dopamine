@@ -18,4 +18,7 @@ test("GitHub Pages 정적 빌드가 생성된다", async () => {
   assert.match(javascript, /Select language/);
   assert.match(javascript, /言語を選択/);
   assert.match(javascript, /horror-dopamine-locale/);
+  assert.match(javascript, /map-line-production\.up\.railway\.app/);
+  assert.match(javascript, /TimeRoots/);
+  assert.match(javascript, /PRODUCT NODE 02/);
 });
