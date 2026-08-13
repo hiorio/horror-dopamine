@@ -1600,8 +1600,8 @@ h3 {
 
 .root-branch { width: 48px; height: 48px; font-size: 10px; }
 .branch-channels { top: 15%; left: 24%; border-color: rgba(103, 188, 255, 0.5); color: #75bfff; }
-.branch-apps { top: 26%; right: 14%; border-color: rgba(167, 137, 255, 0.5); color: #ac96ff; }
-.branch-horror { right: 23%; bottom: 13%; border-color: rgba(240, 68, 56, 0.5); color: #f04438; }
+.branch-apps { top: 24%; right: 18%; border-color: rgba(167, 137, 255, 0.5); color: #ac96ff; }
+.branch-horror { right: 18%; bottom: 21%; border-color: rgba(240, 68, 56, 0.5); color: #f04438; }
 
 .root-stem {
   position: absolute;
@@ -1614,8 +1614,8 @@ h3 {
 }
 
 .stem-channels { transform: rotate(-137deg); }
-.stem-apps { transform: rotate(-42deg); }
-.stem-horror { transform: rotate(43deg); }
+.stem-apps { transform: rotate(-38deg); }
+.stem-horror { transform: rotate(38deg); }
 
 .root-map small {
   position: absolute;
@@ -1636,7 +1636,7 @@ h3 {
 
 .root-node-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
 

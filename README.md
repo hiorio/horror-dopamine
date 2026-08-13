@@ -1,14 +1,14 @@
 # Link Flower
 
-콘텐츠 채널, 앱 개발, 공포도파민을 연결하는 최상위 개인 노드 네트워크입니다.
+앱 개발과 공포도파민을 연결하는 최상위 개인 노드 네트워크입니다.
 서버나 데이터베이스 없이 GitHub Pages에서 배포됩니다.
 
 ## 노드 구조
 
 - `/link-flower/`: 최상위 메인 노드
-- `/link-flower/channels/`: 콘텐츠 채널
-- `/link-flower/apps/`: 앱 개발. — 도화지, TimeRoots
-- `/link-flower/horror/`: 공포도파민 브랜드
+- `/link-flower/apps/`: NODE_01 앱 개발. — 도화지, TimeRoots
+- `/link-flower/horror/`: NODE_02 공포도파민 브랜드
+- `/link-flower/channels/`: NODE_02-A 공포도파민의 외부 채널 연결 페이지
 
 해시 라우팅을 사용하지 않습니다. 각 경로는 독립 HTML 진입점을 가지므로 직접 접근과
 새로고침이 모두 동작합니다.

@@ -18,7 +18,7 @@ function getRoute(): RouteId {
   return "root";
 }
 
-const routeNumbers: Record<RouteId, string> = { root: "00", channels: "01", apps: "02", horror: "03" };
+const routeNumbers: Record<RouteId, string> = { root: "00", channels: "02-A", apps: "01", horror: "02" };
 
 function SiteHeader({ activeRoute, copy, locale, setLocale }: {
   activeRoute: RouteId;
@@ -28,7 +28,6 @@ function SiteHeader({ activeRoute, copy, locale, setLocale }: {
 }) {
   const routes: Array<{ id: RouteId; label: string }> = [
     { id: "root", label: copy.mainNode },
-    { id: "channels", label: copy.channelsNode },
     { id: "apps", label: copy.appsNode },
     { id: "horror", label: copy.horrorNode },
   ];
@@ -66,9 +65,8 @@ function SiteHeader({ activeRoute, copy, locale, setLocale }: {
 
 function RootPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; setLocale: (locale: Locale) => void }) {
   const rootNodes = [
-    { id: "channels" as const, order: "01", code: "CONTENT / OUTLETS", title: copy.channelsCardTitle, description: copy.channelsCardDescription },
-    { id: "apps" as const, order: "02", code: "PRODUCT / BUILD", title: copy.appsCardTitle, description: copy.appsCardDescription },
-    { id: "horror" as const, order: "03", code: "HORROR / BRAND", title: copy.horrorCardTitle, description: copy.horrorCardDescription },
+    { id: "apps" as const, order: "01", code: "PRODUCT / BUILD", title: copy.appsCardTitle, description: copy.appsCardDescription },
+    { id: "horror" as const, order: "02", code: "HORROR / BRAND", title: copy.horrorCardTitle, description: copy.horrorCardDescription },
   ];
 
   return (
@@ -89,11 +87,10 @@ function RootPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
 
         <div className="root-map" aria-hidden="true">
           <span className="root-core">00</span>
-          <span className="root-branch branch-channels">01</span>
-          <span className="root-branch branch-apps">02</span>
-          <span className="root-branch branch-horror">03</span>
-          <i className="root-stem stem-channels" /><i className="root-stem stem-apps" /><i className="root-stem stem-horror" />
-          <small className="label-channels">CHANNELS</small><small className="label-apps">APP DEV</small><small className="label-horror">HORROR</small>
+          <span className="root-branch branch-apps">01</span>
+          <span className="root-branch branch-horror">02</span>
+          <i className="root-stem stem-apps" /><i className="root-stem stem-horror" />
+          <small className="label-apps">APP DEV</small><small className="label-horror">HORROR</small>
         </div>
       </section>
 
@@ -144,7 +141,7 @@ function ChannelsPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale;
 
       <section className="channels" aria-labelledby="channels-title">
         <div className="section-heading">
-          <div><span className="section-index">01</span><h2 id="channels-title">{copy.channelsSectionTitle}</h2></div>
+          <div><span className="section-index">02-A</span><h2 id="channels-title">{copy.channelsSectionTitle}</h2></div>
           <p>{copy.channelsSectionHint.toUpperCase()}</p>
         </div>
         <nav className="channel-grid" aria-label={copy.channelsLabel}>
@@ -161,7 +158,7 @@ function ChannelsPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale;
       </section>
 
       <footer className="site-footer">
-        <div><span className="footer-node">NODE_01</span><p>{copy.channelsFooter}</p></div><span>© 2026 LINK FLOWER</span>
+        <div><span className="footer-node">NODE_02-A</span><p>{copy.channelsFooter}</p></div><span>© 2026 LINK FLOWER</span>
       </footer>
     </main>
   );
@@ -181,12 +178,12 @@ function AppsPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
           <h1 id="apps-page-title" className="development-title">{copy.appsTitle}</h1>
           <p className="hero-description">{copy.appsDescription.map((line) => <span key={line}>{line}<br /></span>)}</p>
         </div>
-        <div className="development-mark" aria-hidden="true"><span>&lt;/&gt;</span><small>NODE_02<br />PRODUCT DEVELOPMENT</small></div>
+        <div className="development-mark" aria-hidden="true"><span>&lt;/&gt;</span><small>NODE_01<br />PRODUCT DEVELOPMENT</small></div>
       </section>
 
       <section className="app-products development-products" aria-labelledby="app-products-title">
         <div className="section-heading development-heading">
-          <div><span className="section-index">02</span><h2 id="app-products-title">{copy.appsSectionTitle}</h2></div>
+          <div><span className="section-index">01</span><h2 id="app-products-title">{copy.appsSectionTitle}</h2></div>
           <p>{copy.appsSectionHint.toUpperCase()}</p>
         </div>
         <div className="product-list">
@@ -217,7 +214,7 @@ function AppsPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
       </section>
 
       <footer className="site-footer development-footer">
-        <div><span className="footer-node">NODE_02</span><p>{copy.appsFooter}</p></div><span>© 2026 LINK FLOWER</span>
+        <div><span className="footer-node">NODE_01</span><p>{copy.appsFooter}</p></div><span>© 2026 LINK FLOWER</span>
       </footer>
     </main>
   );
@@ -246,7 +243,7 @@ function HorrorPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; s
       </section>
 
       <section className="featured" aria-labelledby="featured-title">
-        <div className="section-heading"><div><span className="section-index">03</span><h2 id="featured-title">{copy.featuredTitle}</h2></div><p>{copy.featuredHint.toUpperCase()}</p></div>
+        <div className="section-heading"><div><span className="section-index">02</span><h2 id="featured-title">{copy.featuredTitle}</h2></div><p>{copy.featuredHint.toUpperCase()}</p></div>
         <a className="featured-card" href={node.archiveUrl} target="_blank" rel="noreferrer" aria-label={copy.featuredLinkLabel}>
           <div className="record-visual" aria-hidden="true"><span className="visual-label">MOST VIEWED</span><div className="play-symbol">▶</div><span className="visual-time">ARCHIVE_001</span></div>
           <div className="featured-copy"><span className="featured-kicker">{copy.featuredKicker.toUpperCase()}</span><h3>{copy.featuredHeading[0]}<br />{copy.featuredHeading[1]}</h3><p>{copy.featuredDescription}</p><span className="featured-cta">{copy.featuredCta} <b aria-hidden="true">↗</b></span></div>
@@ -254,7 +251,7 @@ function HorrorPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; s
         <a className="internal-node-link horror-channel-link" href={routeHref("channels")}>{copy.channelsNode}<span aria-hidden="true">→</span></a>
       </section>
 
-      <footer className="site-footer"><div><span className="footer-node">NODE_03</span><p>{copy.horrorFooter}</p></div><span>© 2026 HORROR DOPAMINE</span></footer>
+      <footer className="site-footer"><div><span className="footer-node">NODE_02</span><p>{copy.horrorFooter}</p></div><span>© 2026 HORROR DOPAMINE</span></footer>
     </main>
   );
 }
