@@ -3,22 +3,25 @@ import { productApps } from "./apps";
 import { detectLocale, localeLabels, supportedLocales, ui, type Locale } from "./i18n";
 import { defaultNodeId, nodes } from "./nodes";
 
-type RouteId = "root" | "channels" | "apps" | "horror";
+type RouteId = "root" | "channels" | "apps" | "dohwaji" | "horror";
 type Copy = (typeof ui)[Locale];
 
 const basePath = import.meta.env.BASE_URL;
 
 function routeHref(route: RouteId) {
-  return route === "root" ? basePath : `${basePath}${route}/`;
+  if (route === "root") return basePath;
+  if (route === "dohwaji") return `${basePath}apps/dohwaji/`;
+  return `${basePath}${route}/`;
 }
 
 function getRoute(): RouteId {
   const relativePath = window.location.pathname.slice(basePath.length).replace(/^\/+|\/+$/g, "");
+  if (relativePath === "apps/dohwaji") return "dohwaji";
   if (relativePath === "channels" || relativePath === "apps" || relativePath === "horror") return relativePath;
   return "root";
 }
 
-const routeNumbers: Record<RouteId, string> = { root: "00", channels: "02-A", apps: "01", horror: "02" };
+const routeNumbers: Record<RouteId, string> = { root: "00", channels: "02-A", apps: "01", dohwaji: "01-A", horror: "02" };
 
 function SiteHeader({ activeRoute, copy, locale, setLocale }: {
   activeRoute: RouteId;
@@ -41,7 +44,7 @@ function SiteHeader({ activeRoute, copy, locale, setLocale }: {
       <div className="network-controls">
         <nav className="node-switcher" aria-label={copy.nodeNetworkLabel}>
           {routes.map((route) => (
-            <a className={activeRoute === route.id ? "is-active" : ""} href={routeHref(route.id)} key={route.id}>
+            <a className={activeRoute === route.id || (activeRoute === "dohwaji" && route.id === "apps") ? "is-active" : ""} href={routeHref(route.id)} key={route.id}>
               {routeNumbers[route.id]} <span>{route.label}</span>
             </a>
           ))}
@@ -201,6 +204,7 @@ function AppsPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
                   <h3>{content.displayName}</h3><strong className="product-tagline">{content.tagline}</strong>
                   <p>{content.description}</p><ul>{content.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
                   <div className="product-links">
+                    {app.id === "dohwaji" && <a className="product-detail-link" href={routeHref("dohwaji")}>{copy.appDetail} <span aria-hidden="true">→</span></a>}
                     {app.links.map((link) => <a href={link.href} key={link.kind} target="_blank" rel="noreferrer"
                       aria-label={`${copy.appLinkLabel(content.displayName)} — ${linkLabel(link.kind)}`}>
                       {linkLabel(link.kind)} <span aria-hidden="true">↗</span>
@@ -216,6 +220,76 @@ function AppsPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
       <footer className="site-footer development-footer">
         <div><span className="footer-node">NODE_01</span><p>{copy.appsFooter}</p></div><span>© 2026 LINK FLOWER</span>
       </footer>
+    </main>
+  );
+}
+
+function DohwajiPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; setLocale: (locale: Locale) => void }) {
+  const app = productApps.find((item) => item.id === "dohwaji")!;
+  const content = app.content[locale];
+  const webUrl = app.links.find((link) => link.kind === "web")!.href;
+  const appStoreUrl = app.links.find((link) => link.kind === "appStore")!.href;
+
+  return (
+    <main className="site-shell dohwaji-shell">
+      <div className="dohwaji-grid-bg" aria-hidden="true" />
+      <SiteHeader activeRoute="dohwaji" copy={copy} locale={locale} setLocale={setLocale} />
+
+      <section className="dohwaji-hero" aria-labelledby="dohwaji-page-title">
+        <div className="dohwaji-copy">
+          <div className="dohwaji-kicker"><span>APP NODE 01-A</span><span>MAP / DRAW / SHARE</span></div>
+          <p className="dohwaji-eyebrow">{copy.dohwajiEyebrow}</p>
+          <h1 id="dohwaji-page-title">{content.displayName}</h1>
+          <strong>{copy.dohwajiHeroLine}</strong>
+          <p>{copy.dohwajiHeroDescription}</p>
+          <div className="dohwaji-actions">
+            <a className="dohwaji-primary" href={webUrl} target="_blank" rel="noreferrer">{copy.dohwajiTryWeb}<span aria-hidden="true">↗</span></a>
+            <a className="dohwaji-secondary" href={appStoreUrl} target="_blank" rel="noreferrer">App Store<span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+
+        <div className="dohwaji-map-demo" aria-label={copy.dohwajiMapPreview}>
+          <div className="map-toolbar"><span>DOHWAJI / SEOUL</span><b>SHARED MAP</b></div>
+          <div className="map-canvas" aria-hidden="true">
+            <i className="road road-one" /><i className="road road-two" /><i className="road road-three" /><i className="road road-four" />
+            <span className="map-block block-one" /><span className="map-block block-two" /><span className="map-block block-three" /><span className="map-block block-four" />
+            <span className="map-pin pin-one">A</span><span className="map-pin pin-two">B</span><span className="map-pin pin-three">C</span>
+            <span className="draw-line line-one" /><span className="draw-line line-two" /><span className="draw-line line-three" />
+            <span className="map-note">{copy.dohwajiMapNote}</span>
+          </div>
+          <div className="map-sharebar"><span><i />3 {copy.dohwajiPeople}</span><button type="button" tabIndex={-1}>{copy.dohwajiShare}</button></div>
+        </div>
+      </section>
+
+      <section className="dohwaji-problem" aria-labelledby="dohwaji-problem-title">
+        <span className="dohwaji-section-no">01</span>
+        <div><p>{copy.dohwajiProblemKicker}</p><h2 id="dohwaji-problem-title">{copy.dohwajiProblemTitle}</h2></div>
+        <p>{copy.dohwajiProblemDescription}</p>
+      </section>
+
+      <section className="dohwaji-features" aria-labelledby="dohwaji-features-title">
+        <div className="dohwaji-section-heading"><span>02 / CORE FEATURES</span><h2 id="dohwaji-features-title">{copy.dohwajiFeaturesTitle}</h2></div>
+        <div className="dohwaji-feature-grid">
+          {copy.dohwajiFeatures.map((feature, index) => (
+            <article key={feature.title}>
+              <span>0{index + 1}</span><div className={`feature-symbol symbol-${index + 1}`} aria-hidden="true"><i /><i /><b /></div>
+              <h3>{feature.title}</h3><p>{feature.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="dohwaji-flow" aria-labelledby="dohwaji-flow-title">
+        <div className="dohwaji-section-heading"><span>03 / HOW IT WORKS</span><h2 id="dohwaji-flow-title">{copy.dohwajiFlowTitle}</h2></div>
+        <ol>{copy.dohwajiSteps.map((step, index) => <li key={step}><span>0{index + 1}</span><p>{step}</p></li>)}</ol>
+      </section>
+
+      <section className="dohwaji-final">
+        <p>ONE MAP. ONE LINK.</p><h2>{copy.dohwajiFinalTitle}</h2>
+        <div className="dohwaji-actions"><a className="dohwaji-primary" href={webUrl} target="_blank" rel="noreferrer">{copy.dohwajiTryWeb}<span aria-hidden="true">↗</span></a><a className="dohwaji-secondary" href={routeHref("apps")}>{copy.dohwajiBackApps}<span aria-hidden="true">←</span></a></div>
+      </section>
+
+      <footer className="site-footer dohwaji-footer"><div><span className="footer-node">NODE_01-A</span><p>{copy.dohwajiFooter}</p></div><span>© 2026 DOHWAJI</span></footer>
     </main>
   );
 }
@@ -264,7 +338,7 @@ export default function App() {
   useEffect(() => {
     const metadata = {
       root: [copy.rootPageTitle, copy.rootPageDescription], channels: [copy.channelsPageTitle, copy.channelsPageDescription],
-      apps: [copy.appsPageTitle, copy.appsPageDescription], horror: [copy.horrorPageTitle, copy.horrorPageDescription],
+      apps: [copy.appsPageTitle, copy.appsPageDescription], dohwaji: [copy.dohwajiPageTitle, copy.dohwajiPageDescription], horror: [copy.horrorPageTitle, copy.horrorPageDescription],
     }[route];
     document.documentElement.lang = locale;
     document.title = metadata[0];
@@ -274,6 +348,7 @@ export default function App() {
 
   if (route === "channels") return <ChannelsPage copy={copy} locale={locale} setLocale={setLocale} />;
   if (route === "apps") return <AppsPage copy={copy} locale={locale} setLocale={setLocale} />;
+  if (route === "dohwaji") return <DohwajiPage copy={copy} locale={locale} setLocale={setLocale} />;
   if (route === "horror") return <HorrorPage copy={copy} locale={locale} setLocale={setLocale} />;
   return <RootPage copy={copy} locale={locale} setLocale={setLocale} />;
 }

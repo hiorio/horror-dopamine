@@ -13,6 +13,7 @@ export default defineConfig({
         root: `${root}index.html`,
         channels: `${root}channels/index.html`,
         apps: `${root}apps/index.html`,
+        dohwaji: `${root}apps/dohwaji/index.html`,
         horror: `${root}horror/index.html`,
       },
     },

@@ -6,6 +6,7 @@ const pages = [
   ["../dist/index.html", "Link Flower | Node Network"],
   ["../dist/channels/index.html", "콘텐츠 채널 | Link Flower"],
   ["../dist/apps/index.html", "앱 개발. | Link Flower"],
+  ["../dist/apps/dohwaji/index.html", "도화지 | 함께 만드는 모임 동선 지도"],
   ["../dist/horror/index.html", "공포도파민 | Horror Dopamine"],
 ];
 
@@ -30,4 +31,6 @@ test("루트와 세 하위 노드의 정적 페이지가 생성된다", async ()
   assert.match(javascript, /TimeRoots/);
   assert.match(javascript, /ROOT NODE 00/);
   assert.match(javascript, /APP DEVELOPMENT\./);
+  assert.match(javascript, /다음 모임은 도화지 한 장으로 정리하세요/);
+  assert.match(javascript, /apps\/dohwaji/);
 });
