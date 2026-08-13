@@ -26,7 +26,7 @@ body {
     radial-gradient(circle at 78% 2%, rgba(121, 17, 13, 0.2), transparent 29%),
     var(--black);
   color: var(--bone);
-  font-family: "Arial Narrow", "Noto Sans KR", "Malgun Gothic", Arial, sans-serif;
+  font-family: "Arial Narrow", "Noto Sans KR", "Noto Sans JP", "Yu Gothic", "Malgun Gothic", Arial, sans-serif;
 }
 
 a {
@@ -99,6 +99,48 @@ a {
   text-decoration: none;
 }
 
+.network-controls,
+.language-switcher {
+  display: flex;
+  align-items: center;
+}
+
+.network-controls {
+  gap: 22px;
+}
+
+.language-switcher {
+  gap: 2px;
+}
+
+.language-switcher button {
+  min-width: 30px;
+  padding: 6px 5px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #66615b;
+  cursor: pointer;
+  font: inherit;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  transition: border-color 160ms ease, color 160ms ease, background 160ms ease;
+}
+
+.language-switcher button:hover {
+  color: var(--bone);
+}
+
+.language-switcher button.is-active {
+  border-color: var(--red-line);
+  background: rgba(206, 37, 31, 0.08);
+  color: var(--red-bright);
+}
+
+.language-switcher button:focus-visible {
+  outline: 1px solid var(--red-bright);
+  outline-offset: 2px;
+}
+
 .record-dot {
   width: 8px;
   height: 8px;
@@ -162,6 +204,16 @@ h1 {
 h1 span {
   position: relative;
   display: block;
+}
+
+html[lang="en"] h1 {
+  font-size: clamp(52px, 7vw, 88px);
+  letter-spacing: -0.07em;
+}
+
+html[lang="ja"] h1 {
+  font-size: clamp(52px, 7.2vw, 88px);
+  letter-spacing: -0.08em;
 }
 
 .distressed-title span {
@@ -715,6 +767,22 @@ h3 {
 
   h1 {
     font-size: clamp(64px, 23vw, 90px);
+  }
+
+  html[lang="en"] h1 {
+    font-size: clamp(44px, 14.5vw, 68px);
+  }
+
+  html[lang="ja"] h1 {
+    font-size: clamp(46px, 15vw, 70px);
+  }
+
+  .network-controls {
+    gap: 8px;
+  }
+
+  .node-status {
+    display: none;
   }
 
   .hero-description {
