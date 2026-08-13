@@ -30,7 +30,7 @@ export type ContentNode = {
 export const nodes: Record<string, ContentNode> = {
   "horror-dopamine": {
     id: "horror-dopamine",
-    order: "01",
+    order: "03",
     parentId: null,
     childIds: [],
     category: "HORROR / KR",
