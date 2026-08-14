@@ -48,7 +48,7 @@ export const productApps: ProductApp[] = [
       },
     },
     links: [
-      { kind: "web", href: "https://map-line-production.up.railway.app" },
+      { kind: "web", href: "https://dohwaji.app" },
       { kind: "appStore", href: "https://apps.apple.com/app/id6797682561" },
     ],
   },

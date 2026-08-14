@@ -27,7 +27,8 @@ test("루트와 세 하위 노드의 정적 페이지가 생성된다", async ()
   assert.match(javascript, /Select language/);
   assert.match(javascript, /言語を選択/);
   assert.match(javascript, /link-flower-locale/);
-  assert.match(javascript, /map-line-production\.up\.railway\.app/);
+  assert.match(javascript, /https:\/\/dohwaji\.app/);
+  assert.doesNotMatch(javascript, /map-line-production\.up\.railway\.app/);
   assert.match(javascript, /TimeRoots/);
   assert.match(javascript, /ROOT NODE 00/);
   assert.match(javascript, /APP DEVELOPMENT\./);
