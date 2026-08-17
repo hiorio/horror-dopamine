@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
 import { readFile, readdir, stat } from "node:fs/promises";
 import test from "node:test";
 
@@ -65,4 +66,11 @@ test("루트와 하위 노드의 정적 페이지가 생성된다", async () => 
 
   const socialImage = await stat(new URL("../dist/og.png", import.meta.url));
   assert.ok(socialImage.size > 100000, "social preview should contain the finished Hiorio artwork");
+
+  const timeFlowerIcon = await readFile(new URL("../dist/app-icons/timeflower.png", import.meta.url));
+  assert.equal(
+    createHash("sha256").update(timeFlowerIcon).digest("hex"),
+    "45b0dd9b95adbf6f0001837b8a230b917fe0773cd2e53c37e105c8bf17c6015a",
+    "TimeFlower should use the iPhone build 6 operating icon",
+  );
 });
