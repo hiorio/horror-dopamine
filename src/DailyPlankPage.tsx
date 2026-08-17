@@ -182,19 +182,28 @@ export const dailyPlankCopy: Record<Locale, DailyPlankCopy> = {
   },
 };
 
-function PlankMascot({ small = false }: { small?: boolean }) {
+function AppChick({ pose }: { pose: "plank" | "proud" }) {
+  if (pose === "proud") {
+    return (
+      <span className="dailyplank-chick is-proud" aria-hidden="true">
+        <i className="chick-body" /><i className="chick-tuft" />
+        <i className="chick-smile-eye eye-left" /><i className="chick-smile-eye eye-right" />
+        <i className="chick-beak" /><i className="chick-blush blush-left" /><i className="chick-blush blush-right" />
+        <i className="chick-wing wing-left" /><i className="chick-wing wing-right" />
+        <i className="chick-leg leg-left" /><i className="chick-leg leg-right" />
+      </span>
+    );
+  }
+
   return (
-    <span className={`dailyplank-mascot ${small ? "is-small" : ""}`} aria-hidden="true">
-      <i className="dailyplank-mascot-tail" />
-      <i className="dailyplank-mascot-body" />
-      <i className="dailyplank-mascot-eye eye-left" />
-      <i className="dailyplank-mascot-eye eye-right" />
-      <i className="dailyplank-mascot-beak" />
-      <i className="dailyplank-mascot-arm arm-left" />
-      <i className="dailyplank-mascot-arm arm-right" />
-      <i className="dailyplank-mascot-leg leg-left" />
-      <i className="dailyplank-mascot-leg leg-right" />
-      <i className="dailyplank-mascot-sweat" />
+    <span className="dailyplank-chick is-plank" aria-hidden="true">
+      <i className="chick-body" /><i className="chick-tuft" />
+      <i className="chick-brow brow-left" /><i className="chick-brow brow-right" />
+      <i className="chick-eye eye-left" /><i className="chick-eye eye-right" />
+      <i className="chick-beak" /><i className="chick-blush" />
+      <i className="chick-forearm arm-left" /><i className="chick-forearm arm-right" />
+      <i className="chick-leg leg-left" /><i className="chick-leg leg-right" />
+      <i className="chick-sweat" />
     </span>
   );
 }
@@ -208,7 +217,7 @@ function WorkoutConsole({ copy }: { copy: DailyPlankCopy }) {
         <div className="dailyplank-timer">
           <span>WORK</span><strong>0:30</strong><small>{copy.currentStep}</small>
         </div>
-        <div className="dailyplank-mascot-stage"><PlankMascot /></div>
+        <div className="dailyplank-mascot-stage"><AppChick pose="plank" /></div>
         <div className="dailyplank-next"><span>NEXT</span><b>{copy.nextStep}</b></div>
         <div className="dailyplank-controls" aria-hidden="true"><i>‹</i><b>{copy.pause}</b><i>›</i></div>
       </div>
@@ -289,7 +298,7 @@ export function DailyPlankPage({ header, locale, appsHref }: { header: ReactNode
             <div><span>{copy.streakLabel}</span><strong>{copy.streakValue}</strong></div>
             <div><span>{copy.totalLabel}</span><strong>{copy.totalValue}</strong></div>
           </div>
-          <div className="dailyplank-mascot-message"><PlankMascot small /><p>{copy.mascotMessage}</p></div>
+          <div className="dailyplank-mascot-message"><AppChick pose="proud" /><p>{copy.mascotMessage}</p></div>
         </div>
         <div className="dailyplank-record-copy">
           <span>03 / KEEP THE STREAK</span>

@@ -113,22 +113,47 @@
 .note-haptic { right: -5px; bottom: 115px; }
 .note-haptic i { left: -38px; }
 
-.dailyplank-mascot { position: relative; display: block; width: 118px; height: 72px; }
-.dailyplank-mascot i { position: absolute; display: block; }
-.dailyplank-mascot-body { top: 18px; left: 13px; width: 82px; height: 38px; border: 2px solid #d59d1a; border-radius: 36px 29px 16px 18px; background: var(--dp-yellow); }
-.dailyplank-mascot-tail { z-index: 0; top: 30px; left: 90px; width: 19px; height: 13px; border: 2px solid #d59d1a; border-radius: 0 13px 13px 0; background: var(--dp-yellow); transform: rotate(15deg); }
-.dailyplank-mascot-eye { z-index: 2; top: 28px; width: 6px; height: 7px; border-radius: 50%; background: #342b20; }
-.dailyplank-mascot-eye.eye-left { left: 25px; }
-.dailyplank-mascot-eye.eye-right { left: 40px; }
-.dailyplank-mascot-beak { z-index: 3; top: 37px; left: 29px; width: 14px; height: 8px; background: #ef8d32; clip-path: polygon(0 0,100% 50%,0 100%); }
-.dailyplank-mascot-arm { z-index: 3; top: 50px; width: 9px; height: 17px; border-radius: 4px; background: #e4ae23; }
-.dailyplank-mascot-arm.arm-left { left: 25px; transform: rotate(14deg); }
-.dailyplank-mascot-arm.arm-right { left: 43px; transform: rotate(-8deg); }
-.dailyplank-mascot-leg { top: 51px; width: 8px; height: 15px; border-radius: 4px; background: #e4ae23; }
-.dailyplank-mascot-leg.leg-left { left: 78px; transform: rotate(14deg); }
-.dailyplank-mascot-leg.leg-right { left: 90px; transform: rotate(20deg); }
-.dailyplank-mascot-sweat { top: 7px; left: 18px; width: 8px; height: 11px; border-radius: 50% 50% 60% 60%; background: #65b9e8; transform: rotate(18deg); animation: dailyplank-sweat 1.8s ease-in-out infinite; }
-.dailyplank-mascot.is-small { transform: scale(.68); transform-origin: left center; }
+.dailyplank-chick { position: relative; display: block; flex: 0 0 auto; }
+.dailyplank-chick i { position: absolute; display: block; }
+
+/* The two poses below mirror the dimensions and palette of the app's ChickSprite. */
+.dailyplank-chick.is-plank { width: 100px; height: 62px; transform: scale(1.34); }
+.dailyplank-chick.is-plank .chick-body { top: 12px; left: 2px; width: 92px; height: 44px; border: 2px solid #f5b800; border-radius: 40px 34px 16px 16px; background: #ffd54f; }
+.dailyplank-chick.is-plank .chick-tuft { top: 5px; left: 18px; width: 10px; height: 12px; border: 2px solid #f5b800; border-radius: 6px 6px 6px 0; background: #ffd54f; transform: rotate(-25deg); }
+.dailyplank-chick.is-plank .chick-brow { top: 17px; width: 9px; height: 3px; border-radius: 2px; background: #20242e; }
+.dailyplank-chick.is-plank .brow-left { left: 16px; transform: rotate(14deg); }
+.dailyplank-chick.is-plank .brow-right { left: 34px; transform: rotate(-6deg); }
+.dailyplank-chick.is-plank .chick-eye { top: 22px; width: 7px; height: 7px; border-radius: 50%; background: #20242e; }
+.dailyplank-chick.is-plank .chick-eye::after { position: absolute; top: 1px; left: 1px; width: 2.5px; height: 2.5px; border-radius: 50%; background: white; content: ""; }
+.dailyplank-chick.is-plank .eye-left { left: 16px; }
+.dailyplank-chick.is-plank .eye-right { left: 34px; }
+.dailyplank-chick.is-plank .chick-beak { top: 28px; left: 27px; width: 10px; height: 7px; border-radius: 2px 2px 5px 5px; background: #ff9838; }
+.dailyplank-chick.is-plank .chick-blush { top: 31px; left: 8px; width: 9px; height: 5px; border-radius: 4px; background: #ffab91; opacity: .8; }
+.dailyplank-chick.is-plank .chick-forearm { top: 48px; width: 9px; height: 14px; border: 2px solid #f5b800; border-radius: 4px; background: #ffc93a; }
+.dailyplank-chick.is-plank .arm-left { left: 20px; }
+.dailyplank-chick.is-plank .arm-right { left: 34px; }
+.dailyplank-chick.is-plank .chick-leg { top: 50px; width: 4px; height: 10px; border-radius: 2px; background: #ff9838; transform: rotate(12deg); }
+.dailyplank-chick.is-plank .leg-left { left: 78px; }
+.dailyplank-chick.is-plank .leg-right { left: 68px; }
+.dailyplank-chick.is-plank .chick-sweat { top: 2px; left: 8px; width: 7px; height: 9px; border-radius: 4px 4px 5px 5px; background: #7eb6ff; animation: dailyplank-sweat 1.8s ease-in-out infinite; }
+
+.dailyplank-chick.is-proud { width: 82px; height: 82px; transform: scale(.68); transform-origin: left center; }
+.dailyplank-chick.is-proud .chick-body { top: 10px; left: 6px; width: 70px; height: 62px; border: 2px solid #f5b800; border-radius: 35px 35px 28px 28px; background: #ffd54f; }
+.dailyplank-chick.is-proud .chick-tuft { top: 3px; left: 36px; width: 10px; height: 12px; border: 2px solid #f5b800; border-radius: 6px 6px 6px 0; background: #ffd54f; transform: rotate(-25deg); }
+.dailyplank-chick.is-proud .chick-smile-eye { top: 30px; width: 9px; height: 6px; border-bottom: 3px solid #20242e; border-radius: 0 0 6px 6px; }
+.dailyplank-chick.is-proud .eye-left { left: 22px; }
+.dailyplank-chick.is-proud .eye-right { left: 46px; }
+.dailyplank-chick.is-proud .chick-beak { top: 36px; left: 35px; width: 12px; height: 8px; border-radius: 2px 2px 6px 6px; background: #ff9838; }
+.dailyplank-chick.is-proud .chick-blush { top: 39px; width: 9px; height: 5px; border-radius: 4px; background: #ffab91; opacity: .8; }
+.dailyplank-chick.is-proud .blush-left { left: 16px; }
+.dailyplank-chick.is-proud .blush-right { left: 57px; }
+.dailyplank-chick.is-proud .chick-wing { top: 40px; width: 16px; height: 22px; border: 2px solid #f5b800; border-radius: 8px 8px 10px 10px; background: #ffc93a; }
+.dailyplank-chick.is-proud .wing-left { left: 0; transform: rotate(18deg); }
+.dailyplank-chick.is-proud .wing-right { left: 66px; transform: rotate(-18deg); }
+.dailyplank-chick.is-proud .chick-leg { top: 70px; width: 4px; height: 10px; border-radius: 2px; background: #ff9838; }
+.dailyplank-chick.is-proud .chick-leg::after { position: absolute; top: 8px; left: -3px; width: 10px; height: 4px; border-radius: 2px; background: #ff9838; content: ""; }
+.dailyplank-chick.is-proud .leg-left { left: 30px; }
+.dailyplank-chick.is-proud .leg-right { left: 48px; }
 
 .dailyplank-section-intro { display: grid; margin-bottom: 65px; grid-template-columns: .48fr 1.52fr; gap: 44px; align-items: start; }
 .dailyplank-section-intro > span,.dailyplank-coach-copy > span,.dailyplank-record-copy > span { color: var(--dp-blue); font: 800 9px monospace; letter-spacing: .13em; }
@@ -205,7 +230,7 @@ html[lang="en"] .dailyplank-hero-copy h1 { font-size: clamp(76px,8vw,110px); }
 html[lang="ja"] .dailyplank-hero-copy h1 { font-size: clamp(68px,7.2vw,99px); }
 
 @keyframes dailyplank-orbit { to { transform: rotate(360deg); } }
-@keyframes dailyplank-sweat { 0%,100% { opacity: .2; transform: translateY(-3px) rotate(18deg); } 50% { opacity: 1; transform: translateY(2px) rotate(18deg); } }
+@keyframes dailyplank-sweat { 0%,100% { opacity: .2; transform: translateY(-3px); } 50% { opacity: 1; transform: translateY(2px); } }
 
 @media (max-width: 1000px) {
   .dailyplank-hero { min-height: auto; grid-template-columns: 1fr; }
@@ -268,5 +293,5 @@ html[lang="ja"] .dailyplank-hero-copy h1 { font-size: clamp(68px,7.2vw,99px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .dailyplank-console::before,.dailyplank-mascot-sweat { animation: none; }
+  .dailyplank-console::before,.dailyplank-chick .chick-sweat { animation: none; }
 }
