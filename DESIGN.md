@@ -81,6 +81,7 @@ Link Flower의 기본 디자인과 이후 색상 수정은 **팔레트 02 — Sl
 | TimeRoots | App Store에 등록된 현재 아트워크 | `1.1` |
 | TimeFlower | 최신 iPhone release build 6의 `assets/images/icon.png` (`codex/timeline-release`) | `1.0.0` |
 | 매일 플랭크 | 앱 빌드 설정의 `src/assets/branding/icon.png` | `0.2.1` |
+| 비온다매 | 운영 앱 설정의 `apps/mobile/assets/biondamae-icon.png` | `1.1.0` |
 
 ### 페이지 추가 시 통과할 기준
 

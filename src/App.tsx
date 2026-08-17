@@ -68,7 +68,7 @@ function SiteHeader({ activeRoute, copy, locale, setLocale }: {
 
 function RootPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; setLocale: (locale: Locale) => void }) {
   const workAreas = [
-    { id: "apps" as const, code: "PRODUCTS / DESIGN & BUILD", count: "04 PRODUCTS", title: copy.appsCardTitle, description: copy.appsCardDescription },
+    { id: "apps" as const, code: "PRODUCTS / DESIGN & BUILD", count: `${String(productApps.length).padStart(2, "0")} PRODUCTS`, title: copy.appsCardTitle, description: copy.appsCardDescription },
     { id: "horror" as const, code: "CONTENT / HORROR", count: "01 BRAND", title: copy.horrorCardTitle, description: copy.horrorCardDescription },
   ];
 
@@ -93,7 +93,7 @@ function RootPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
           <div className="maker-monogram" aria-hidden="true">H</div>
           <p>{copy.rootFooter}</p>
           <dl>
-            <div><dt>PRODUCTS</dt><dd>04</dd></div>
+            <div><dt>PRODUCTS</dt><dd>{String(productApps.length).padStart(2, "0")}</dd></div>
             <div><dt>CONTENT BRAND</dt><dd>01</dd></div>
             <div><dt>BASED</dt><dd>KR</dd></div>
           </dl>
@@ -192,20 +192,21 @@ function AppsPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
 
       <section className="development-hero" aria-labelledby="apps-page-title">
         <div className="development-copy">
-          <div className="development-kicker"><span>{copy.appsKicker}</span><span>DESIGN / BUILD / OPERATE</span></div>
+          <div className="development-kicker"><span>{copy.appsKicker}</span><span>DESIGN / GROW / OPERATE</span></div>
           <h1 id="apps-page-title" className="development-title">{copy.appsTitle}</h1>
           <p className="hero-description">{copy.appsDescription.map((line) => <span key={line}>{line}<br /></span>)}</p>
         </div>
-        <div className="development-register" aria-label={copy.appsSectionTitle}>
-          <div className="register-head"><span>PRODUCT REGISTER</span><b>{String(productApps.length).padStart(2, "0")}</b></div>
-          <div className="register-list">
+        <aside className="development-garden" aria-label={copy.appsSectionTitle}>
+          <div className="garden-head"><span>LINK FLOWER / PRODUCTS</span><b>{String(productApps.length).padStart(2, "0")}</b></div>
+          <div className="garden-plot">
+            <i className="garden-stem" aria-hidden="true" />
             {productApps.map((app) => {
               const content = app.content[locale];
-              return <div className={`register-item register-${app.accent}`} key={app.id}><span>{app.order}</span><img alt="" src={`${basePath}${app.icon}`} /><strong>{content.displayName}</strong><small>{app.status === "building" ? copy.appBuilding : copy.appStatus}</small></div>;
+              return <div className={`garden-bloom bloom-${app.order} garden-${app.accent}`} key={app.id}><span>{app.order}</span><img alt="" src={`${basePath}${app.icon}`} /><div><strong>{content.displayName}</strong><small>{app.status === "building" ? copy.appBuilding : copy.appStatus}</small></div></div>;
             })}
           </div>
-          <div className="register-foot"><span>LIVE {String(liveCount).padStart(2, "0")}</span><span>BUILD {String(productApps.length - liveCount).padStart(2, "0")}</span></div>
-        </div>
+          <div className="garden-foot"><span>{copy.appStatus} {String(liveCount).padStart(2, "0")}</span><span>{copy.appBuilding} {String(productApps.length - liveCount).padStart(2, "0")}</span></div>
+        </aside>
       </section>
 
       <section className="app-products development-products" aria-labelledby="app-products-title">

@@ -14,7 +14,7 @@ export type ProductApp = {
   icon: string;
   version: string;
   platforms: string[];
-  accent: "cyan" | "amber" | "apricot" | "cobalt";
+  accent: "cyan" | "amber" | "apricot" | "cobalt" | "sky";
   status?: "live" | "building";
   content: Record<Locale, LocalizedAppCopy>;
   links: Array<{
@@ -151,5 +151,35 @@ export const productApps: ProductApp[] = [
       },
     },
     links: [{ kind: "web", href: "https://hiorio.github.io/Daily-Plank/" }],
+  },
+  {
+    id: "biondamae",
+    order: "05",
+    code: "OBSERVE / COMPARE / JUDGE",
+    icon: "app-icons/biondamae.png",
+    version: "1.1.0",
+    platforms: ["WEB", "iOS", "ANDROID"],
+    accent: "sky",
+    content: {
+      ko: {
+        displayName: "비온다매",
+        tagline: "예보가 맞았는지 끝까지 보는 날씨 앱",
+        description: "현재 관측과 7일 날씨를 보고, 과거 예보와 6개 예보사를 같은 시간 기준으로 맞대어 실제로 얼마나 맞았는지 기록하는 날씨 앱입니다.",
+        features: ["현재 관측과 7일 예보", "6개 예보사 맞비교", "과거 예보와 정확도 기록"],
+      },
+      en: {
+        displayName: "Biondamae",
+        tagline: "A weather app that checks how the forecast actually did",
+        description: "See current observations and the seven-day outlook, then compare six providers and past forecasts at the same point in time to learn what really held up.",
+        features: ["Current conditions and 7-day outlook", "Six-provider comparison", "Past forecasts and accuracy history"],
+      },
+      ja: {
+        displayName: "ビオンダメ",
+        tagline: "予報が本当に当たったか、最後まで見る天気アプリ",
+        description: "現在の観測と7日間予報を確認し、過去の予報と6つの予報元を同じ時刻基準で比較して、実際にどれだけ当たったかを記録する天気アプリです。",
+        features: ["現在の観測と7日間予報", "6つの予報元を比較", "過去予報と精度の記録"],
+      },
+    },
+    links: [{ kind: "web", href: "https://weather-forecast-production-0aac.up.railway.app/" }],
   },
 ];
