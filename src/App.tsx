@@ -27,8 +27,6 @@ function getRoute(): RouteId {
   return "root";
 }
 
-const routeNumbers: Record<RouteId, string> = { root: "00", channels: "02-A", apps: "01", dohwaji: "01-A", timeflower: "01-C", dailyplank: "01-D", horror: "02" };
-
 function SiteHeader({ activeRoute, copy, locale, setLocale }: {
   activeRoute: RouteId;
   copy: Copy;
@@ -45,13 +43,13 @@ function SiteHeader({ activeRoute, copy, locale, setLocale }: {
     <header className="network-bar">
       <a className="network-name" href={routeHref("root")}>
         <span className="record-dot" aria-hidden="true" />
-        LINK FLOWER
+        HIORIO
       </a>
       <div className="network-controls">
         <nav className="node-switcher" aria-label={copy.nodeNetworkLabel}>
           {routes.map((route) => (
             <a className={activeRoute === route.id || ((activeRoute === "dohwaji" || activeRoute === "timeflower" || activeRoute === "dailyplank") && route.id === "apps") ? "is-active" : ""} href={routeHref(route.id)} key={route.id}>
-              {routeNumbers[route.id]} <span>{route.label}</span>
+              <span>{route.label}</span>
             </a>
           ))}
         </nav>
@@ -63,19 +61,15 @@ function SiteHeader({ activeRoute, copy, locale, setLocale }: {
             </button>
           ))}
         </div>
-        <div className="node-status">
-          <span>NODE_{routeNumbers[activeRoute]}</span><span className="status-separator">/</span>
-          <span>{copy.active.toUpperCase()}</span>
-        </div>
       </div>
     </header>
   );
 }
 
 function RootPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; setLocale: (locale: Locale) => void }) {
-  const rootNodes = [
-    { id: "apps" as const, order: "01", code: "PRODUCT / BUILD", title: copy.appsCardTitle, description: copy.appsCardDescription },
-    { id: "horror" as const, order: "02", code: "HORROR / BRAND", title: copy.horrorCardTitle, description: copy.horrorCardDescription },
+  const workAreas = [
+    { id: "apps" as const, code: "PRODUCTS / DESIGN & BUILD", count: "04 PRODUCTS", title: copy.appsCardTitle, description: copy.appsCardDescription },
+    { id: "horror" as const, code: "CONTENT / HORROR", count: "01 BRAND", title: copy.horrorCardTitle, description: copy.horrorCardDescription },
   ];
 
   return (
@@ -85,7 +79,7 @@ function RootPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
 
       <section className="root-hero" aria-labelledby="root-page-title">
         <div className="root-copy">
-          <div className="root-kicker"><span>{copy.rootKicker}</span><span>PERSONAL NETWORK / KR</span></div>
+          <div className="root-kicker"><span>{copy.rootKicker}</span><span>PRODUCT / CONTENT / KR</span></div>
           <h1 id="root-page-title" className="root-title">
             <span>{copy.rootTitle}</span><span>{copy.rootTitleAccent}</span>
           </h1>
@@ -94,33 +88,46 @@ function RootPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
           </p>
         </div>
 
-        <div className="root-map" aria-hidden="true">
-          <span className="root-core">00</span>
-          <span className="root-branch branch-apps">01</span>
-          <span className="root-branch branch-horror">02</span>
-          <i className="root-stem stem-apps" /><i className="root-stem stem-horror" />
-          <small className="label-apps">APP DEV</small><small className="label-horror">HORROR</small>
-        </div>
+        <aside className="maker-card" aria-label={copy.rootKicker}>
+          <div className="maker-card-top"><span>HIORIO / 2026</span><i /></div>
+          <div className="maker-monogram" aria-hidden="true">H</div>
+          <p>{copy.rootFooter}</p>
+          <dl>
+            <div><dt>PRODUCTS</dt><dd>04</dd></div>
+            <div><dt>CONTENT BRAND</dt><dd>01</dd></div>
+            <div><dt>BASED</dt><dd>KR</dd></div>
+          </dl>
+        </aside>
       </section>
 
-      <section className="root-nodes" aria-labelledby="root-nodes-title">
+      <section className="root-work" aria-labelledby="root-work-title">
         <div className="section-heading root-heading">
-          <div><span className="section-index">00</span><h2 id="root-nodes-title">{copy.rootSectionTitle}</h2></div>
+          <div><span className="section-index">WORK</span><h2 id="root-work-title">{copy.rootSectionTitle}</h2></div>
           <p>{copy.rootSectionHint.toUpperCase()}</p>
         </div>
-        <nav className="root-node-grid" aria-label={copy.rootSectionTitle}>
-          {rootNodes.map((node) => (
-            <a className={`root-node-card node-card-${node.id}`} href={routeHref(node.id)} key={node.id}>
-              <div className="root-node-meta"><span>NODE_{node.order}</span><span>{node.code}</span></div>
-              <strong>{node.title}</strong><p>{node.description}</p>
-              <span className="root-node-cta">{copy.enterNode} <b aria-hidden="true">→</b></span>
+        <nav className="root-work-grid" aria-label={copy.rootSectionTitle}>
+          {workAreas.map((work) => (
+            <a className={`root-work-card work-card-${work.id}`} href={routeHref(work.id)} key={work.id}>
+              <div className="work-card-visual" aria-hidden="true">
+                <span>{work.code}</span>
+                {work.id === "apps" ? (
+                  <div className="work-app-icons">{productApps.map((app) => <img src={`${basePath}${app.icon}`} alt="" key={app.id} />)}</div>
+                ) : (
+                  <div className="work-horror-mark"><i>REC</i><b>공포<br />도파민</b><span>STORIES / SHORTS</span></div>
+                )}
+              </div>
+              <div className="work-card-copy">
+                <div className="work-card-meta"><span>{work.count}</span><span>INDEPENDENT</span></div>
+                <strong>{work.title}</strong><p>{work.description}</p>
+                <span className="root-work-cta">{copy.enterNode} <b aria-hidden="true">→</b></span>
+              </div>
             </a>
           ))}
         </nav>
       </section>
 
       <footer className="site-footer root-footer">
-        <div><span className="footer-node">NODE_00</span><p>{copy.rootFooter}</p></div><span>© 2026 LINK FLOWER</span>
+        <div><span className="footer-node">LINK FLOWER</span><p>{copy.rootFooter}</p></div><span>© 2026 HIORIO</span>
       </footer>
     </main>
   );

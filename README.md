@@ -1,11 +1,11 @@
 # Link Flower
 
-앱 개발과 공포도파민을 연결하는 최상위 개인 노드 네트워크입니다.
+Hiorio가 직접 만든 앱과 운영하는 콘텐츠를 소개하는 개인 작업 인덱스입니다.
 서버나 데이터베이스 없이 GitHub Pages에서 배포됩니다.
 
-## 노드 구조
+## 페이지 구조
 
-- `/link-flower/`: 최상위 메인 노드
+- `/link-flower/`: Hiorio 소개와 전체 작업 인덱스
 - `/link-flower/apps/`: NODE_01 앱 개발. — 도화지, TimeRoots, TimeFlower, 매일 플랭크
 - `/link-flower/apps/dohwaji/`: NODE_01-A 도화지 제품 소개 — 공식 서비스 `https://dohwaji.app`
 - `/link-flower/apps/timeflower/`: NODE_01-C TimeFlower 제품 소개 — 공유 캘린더, 출시 준비 중
@@ -26,7 +26,7 @@ npm install
 npm run dev
 ```
 
-앱 개발 노드의 제품은 `src/apps.ts`의 `productApps` 배열에서 관리합니다.
+앱 목록의 제품은 `src/apps.ts`의 `productApps` 배열에서 관리합니다.
 공포도파민 브랜드와 채널 데이터는 `src/nodes.ts`에서 관리합니다.
 
 ## 배포
