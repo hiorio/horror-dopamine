@@ -1,0 +1,272 @@
+.dailyplank-shell {
+  --dp-bg: #f4f6fc;
+  --dp-paper: #ffffff;
+  --dp-ink: #101828;
+  --dp-muted: #667085;
+  --dp-faint: #98a2b3;
+  --dp-line: #d9deea;
+  --dp-blue: #3859d9;
+  --dp-blue-dark: #233d9d;
+  --dp-blue-soft: #e7ecff;
+  --dp-green: #2f7d4a;
+  --dp-green-soft: #e4f5e8;
+  --dp-yellow: #ffd94a;
+  --dp-coral: #e85348;
+  position: relative;
+  overflow-x: clip;
+  background: var(--dp-bg);
+  box-shadow: 0 0 0 100vmax var(--dp-bg);
+  color: var(--dp-ink);
+  font-family: "Noto Sans KR", "Noto Sans JP", "Yu Gothic", "Malgun Gothic", Arial, sans-serif;
+}
+
+.dailyplank-field {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 79% 8%, rgba(56, 89, 217, 0.14), transparent 26%),
+    linear-gradient(rgba(56, 89, 217, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 89, 217, 0.035) 1px, transparent 1px);
+  background-size: auto, 56px 56px, 56px 56px;
+  mask-image: linear-gradient(to bottom, #000 0 760px, transparent 1160px);
+}
+
+.dailyplank-shell > *:not(.dailyplank-field) { position: relative; z-index: 1; }
+.dailyplank-shell::before,.dailyplank-shell::after { background: rgba(16, 24, 40, 0.08); }
+
+.dailyplank-shell .network-bar {
+  z-index: 5;
+  border-color: rgba(16, 24, 40, 0.12);
+  background: rgba(244, 246, 252, 0.88);
+  color: var(--dp-ink);
+  backdrop-filter: blur(14px);
+}
+.dailyplank-shell .record-dot { background: var(--dp-blue); box-shadow: 0 0 0 5px rgba(56, 89, 217, 0.1), 0 0 15px rgba(56, 89, 217, 0.35); }
+.dailyplank-shell .node-switcher { border-color: rgba(16, 24, 40, 0.14); background: rgba(255, 255, 255, 0.72); }
+.dailyplank-shell .node-switcher a { color: #8a94a6; }
+.dailyplank-shell .node-switcher a:hover { color: var(--dp-ink); }
+.dailyplank-shell .node-switcher a.is-active { background: var(--dp-blue-soft); color: var(--dp-blue-dark); }
+.dailyplank-shell .language-switcher button { color: #98a2b3; }
+.dailyplank-shell .language-switcher button:hover { color: var(--dp-ink); }
+.dailyplank-shell .language-switcher button.is-active { border-color: var(--dp-blue); background: rgba(56, 89, 217, 0.08); color: var(--dp-blue-dark); }
+.dailyplank-shell .node-status { color: var(--dp-faint); }
+.dailyplank-shell .node-status span:last-child { color: var(--dp-green); }
+
+.dailyplank-hero {
+  display: grid;
+  min-height: 790px;
+  padding: 80px 0 90px;
+  border-bottom: 1px solid var(--dp-line);
+  grid-template-columns: minmax(0, 0.96fr) minmax(410px, 0.78fr);
+  gap: clamp(40px, 7vw, 92px);
+  align-items: center;
+}
+
+.dailyplank-kicker { display: flex; margin-bottom: 56px; align-items: center; gap: 22px; color: var(--dp-blue); font: 700 9px monospace; letter-spacing: 0.13em; }
+.dailyplank-kicker span:first-child { display: inline-flex; align-items: center; gap: 10px; }
+.dailyplank-kicker span:first-child::before { width: 28px; height: 2px; background: var(--dp-blue); content: ""; }
+.dailyplank-kicker span:last-child { color: var(--dp-faint); }
+.dailyplank-eyebrow { margin: 0 0 14px; color: var(--dp-blue-dark); font-size: 13px; font-weight: 800; }
+.dailyplank-hero-copy h1 { display: flex; margin: 0; flex-direction: column; color: var(--dp-ink); font-size: clamp(78px, 8.5vw, 118px); font-weight: 900; letter-spacing: -0.09em; line-height: 0.78; }
+.dailyplank-hero-copy h1 strong { color: var(--dp-blue); font: inherit; }
+.dailyplank-hero-copy h2 { max-width: 590px; margin: 55px 0 17px; color: var(--dp-ink); font-size: clamp(24px, 2.8vw, 36px); letter-spacing: -0.055em; line-height: 1.25; }
+.dailyplank-description { max-width: 540px; margin: 0; color: var(--dp-muted); font-size: 14px; line-height: 1.85; }
+.dailyplank-actions { display: flex; margin-top: 34px; flex-wrap: wrap; align-items: center; gap: 11px; }
+.dailyplank-primary,.dailyplank-back { display: inline-flex; min-height: 48px; padding: 0 17px; align-items: center; justify-content: space-between; gap: 28px; border: 1px solid var(--dp-blue); font: 700 10px monospace; text-decoration: none; }
+.dailyplank-primary { background: var(--dp-blue); color: white; box-shadow: 0 10px 25px rgba(56, 89, 217, 0.2); }
+.dailyplank-primary:hover { background: var(--dp-blue-dark); border-color: var(--dp-blue-dark); }
+.dailyplank-back { min-height: 40px; padding: 0 12px; border-color: transparent; color: var(--dp-muted); gap: 10px; }
+.dailyplank-back:hover { color: var(--dp-blue-dark); }
+.dailyplank-status { display: inline-flex; min-height: 48px; padding: 0 14px; align-items: center; gap: 8px; border: 1px solid var(--dp-line); background: rgba(255,255,255,.58); color: var(--dp-muted); font: 700 9px monospace; }
+.dailyplank-status i { width: 6px; height: 6px; border-radius: 50%; background: #e5a13a; box-shadow: 0 0 8px rgba(229,161,58,.5); }
+.dailyplank-primary:focus-visible,.dailyplank-back:focus-visible { outline: 2px solid var(--dp-blue); outline-offset: 3px; }
+
+.dailyplank-console { position: relative; width: 100%; min-height: 650px; }
+.dailyplank-console::before { position: absolute; inset: 68px 30px 32px; border: 1px dashed rgba(56,89,217,.22); border-radius: 50%; content: ""; animation: dailyplank-orbit 22s linear infinite; }
+.dailyplank-phone { position: absolute; z-index: 2; top: 8px; left: 50%; width: 330px; min-height: 630px; overflow: hidden; border: 7px solid #131a2a; border-radius: 44px; background: var(--dp-paper); box-shadow: 0 34px 70px rgba(31,51,112,.24), 10px 13px 0 rgba(56,89,217,.08); transform: translateX(-50%) rotate(2deg); }
+.dailyplank-phone::before { position: absolute; z-index: 4; top: 7px; left: 50%; width: 84px; height: 20px; border-radius: 0 0 13px 13px; background: #131a2a; content: ""; transform: translateX(-50%); }
+.dailyplank-phone-head { display: flex; min-height: 61px; padding: 21px 20px 9px; align-items: center; justify-content: space-between; color: var(--dp-muted); font-size: 12px; }
+.dailyplank-phone-head b { font-size: 10px; }
+.dailyplank-progress { height: 6px; margin: 0 20px; overflow: hidden; border-radius: 99px; background: #edf0f7; }
+.dailyplank-progress i { display: block; width: 17%; height: 100%; border-radius: inherit; background: var(--dp-blue); }
+.dailyplank-timer { position: relative; display: flex; width: 194px; height: 194px; margin: 28px auto 16px; flex-direction: column; align-items: center; justify-content: center; border: 12px solid var(--dp-blue-soft); border-radius: 50%; background: white; box-shadow: inset 0 0 0 2px rgba(56,89,217,.08); }
+.dailyplank-timer::before { position: absolute; inset: -12px; border: 12px solid transparent; border-top-color: var(--dp-blue); border-right-color: var(--dp-blue); border-radius: 50%; content: ""; transform: rotate(18deg); }
+.dailyplank-timer span { color: var(--dp-blue); font: 800 8px monospace; letter-spacing: .15em; }
+.dailyplank-timer strong { margin: 3px 0 1px; color: var(--dp-blue); font: 800 55px/1 monospace; letter-spacing: -0.09em; }
+.dailyplank-timer small { color: var(--dp-muted); font-size: 11px; font-weight: 800; }
+.dailyplank-mascot-stage { display: grid; height: 100px; margin: 0 18px; place-items: center; border: 1px solid var(--dp-line); border-radius: 20px; background: #fff9e8; }
+.dailyplank-next { display: flex; min-height: 56px; margin: 12px 18px 0; padding: 0 14px; flex-direction: column; justify-content: center; gap: 5px; border-radius: 16px; background: var(--dp-blue-soft); }
+.dailyplank-next span { color: var(--dp-blue); font: 800 7px monospace; letter-spacing: .14em; }
+.dailyplank-next b { overflow: hidden; color: var(--dp-ink); font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+.dailyplank-controls { display: grid; margin: 12px 18px 19px; grid-template-columns: 44px 1fr 44px; gap: 8px; }
+.dailyplank-controls i,.dailyplank-controls b { display: grid; height: 42px; border-radius: 13px; place-items: center; font-style: normal; }
+.dailyplank-controls i { border: 1px solid var(--dp-line); color: var(--dp-blue); }
+.dailyplank-controls b { background: var(--dp-blue); color: white; font-size: 11px; }
+.dailyplank-console-note { position: absolute; z-index: 3; display: flex; width: 110px; min-height: 71px; padding: 12px; flex-direction: column; justify-content: space-between; border: 1px solid var(--dp-line); background: rgba(255,255,255,.94); box-shadow: 0 13px 30px rgba(35,61,157,.13); }
+.dailyplank-console-note span { color: var(--dp-faint); font: 700 7px monospace; letter-spacing: .14em; }
+.dailyplank-console-note b { color: var(--dp-blue); font: 800 23px monospace; }
+.dailyplank-console-note i { position: absolute; top: 50%; width: 38px; height: 1px; background: var(--dp-blue); opacity: .5; }
+.note-voice { top: 130px; left: -7px; }
+.note-voice i { right: -38px; }
+.note-haptic { right: -5px; bottom: 115px; }
+.note-haptic i { left: -38px; }
+
+.dailyplank-mascot { position: relative; display: block; width: 118px; height: 72px; }
+.dailyplank-mascot i { position: absolute; display: block; }
+.dailyplank-mascot-body { top: 18px; left: 13px; width: 82px; height: 38px; border: 2px solid #d59d1a; border-radius: 36px 29px 16px 18px; background: var(--dp-yellow); }
+.dailyplank-mascot-tail { z-index: 0; top: 30px; left: 90px; width: 19px; height: 13px; border: 2px solid #d59d1a; border-radius: 0 13px 13px 0; background: var(--dp-yellow); transform: rotate(15deg); }
+.dailyplank-mascot-eye { z-index: 2; top: 28px; width: 6px; height: 7px; border-radius: 50%; background: #342b20; }
+.dailyplank-mascot-eye.eye-left { left: 25px; }
+.dailyplank-mascot-eye.eye-right { left: 40px; }
+.dailyplank-mascot-beak { z-index: 3; top: 37px; left: 29px; width: 14px; height: 8px; background: #ef8d32; clip-path: polygon(0 0,100% 50%,0 100%); }
+.dailyplank-mascot-arm { z-index: 3; top: 50px; width: 9px; height: 17px; border-radius: 4px; background: #e4ae23; }
+.dailyplank-mascot-arm.arm-left { left: 25px; transform: rotate(14deg); }
+.dailyplank-mascot-arm.arm-right { left: 43px; transform: rotate(-8deg); }
+.dailyplank-mascot-leg { top: 51px; width: 8px; height: 15px; border-radius: 4px; background: #e4ae23; }
+.dailyplank-mascot-leg.leg-left { left: 78px; transform: rotate(14deg); }
+.dailyplank-mascot-leg.leg-right { left: 90px; transform: rotate(20deg); }
+.dailyplank-mascot-sweat { top: 7px; left: 18px; width: 8px; height: 11px; border-radius: 50% 50% 60% 60%; background: #65b9e8; transform: rotate(18deg); animation: dailyplank-sweat 1.8s ease-in-out infinite; }
+.dailyplank-mascot.is-small { transform: scale(.68); transform-origin: left center; }
+
+.dailyplank-section-intro { display: grid; margin-bottom: 65px; grid-template-columns: .48fr 1.52fr; gap: 44px; align-items: start; }
+.dailyplank-section-intro > span,.dailyplank-coach-copy > span,.dailyplank-record-copy > span { color: var(--dp-blue); font: 800 9px monospace; letter-spacing: .13em; }
+.dailyplank-section-intro p,.dailyplank-coach-copy > p,.dailyplank-record-copy > p { margin: 0 0 14px; color: var(--dp-blue-dark); font-size: 12px; font-weight: 800; }
+.dailyplank-section-intro h2,.dailyplank-coach h2,.dailyplank-record h2,.dailyplank-final h2 { margin: 0; color: var(--dp-ink); font-size: clamp(40px, 5vw, 66px); letter-spacing: -0.075em; line-height: 1.08; }
+
+.dailyplank-routines { padding: 112px 0 116px; border-bottom: 1px solid var(--dp-line); }
+.dailyplank-routine-rail { border-top: 2px solid var(--dp-ink); }
+.dailyplank-routine-rail article { position: relative; display: grid; min-height: 174px; padding: 25px 0; border-bottom: 1px solid var(--dp-line); grid-template-columns: 150px 1fr 120px; gap: 28px; align-items: center; }
+.dailyplank-minute { display: flex; align-items: baseline; gap: 8px; }
+.dailyplank-minute strong { color: var(--dp-blue); font: 800 clamp(52px,6vw,78px)/1 monospace; letter-spacing: -.08em; }
+.dailyplank-minute span { color: var(--dp-faint); font: 800 8px monospace; }
+.dailyplank-routine-rail small { color: var(--dp-blue); font: 800 8px monospace; text-transform: uppercase; }
+.dailyplank-routine-rail h3 { margin: 10px 0 7px; color: var(--dp-ink); font-size: 23px; letter-spacing: -.045em; }
+.dailyplank-routine-rail p { margin: 0; color: var(--dp-muted); font-size: 12px; line-height: 1.6; }
+.dailyplank-routine-rail article > i { position: relative; display: block; width: 108px; height: 13px; border-radius: 99px; background: var(--dp-blue-soft); }
+.dailyplank-routine-rail article > i::before { position: absolute; top: 0; left: 0; width: var(--routine-width, 35%); height: 100%; border-radius: inherit; background: var(--dp-blue); content: ""; }
+.dailyplank-routine-rail article:nth-child(2) > i::before { --routine-width: 62%; }
+.dailyplank-routine-rail article:nth-child(3) > i::before { --routine-width: 100%; }
+
+.dailyplank-coach { display: grid; padding: 120px 0; border-bottom: 1px solid var(--dp-line); grid-template-columns: minmax(0, .86fr) minmax(440px, 1fr); gap: clamp(55px, 9vw, 120px); align-items: center; }
+.dailyplank-coach-copy h2 { margin-top: 0; }
+.dailyplank-coach-description,.dailyplank-record-copy > div { display: grid; max-width: 570px; margin-top: 34px; grid-template-columns: 36px 1fr; gap: 17px; }
+.dailyplank-coach-description > i,.dailyplank-record-copy > div > i { display: block; width: 32px; height: 3px; margin-top: 10px; background: var(--dp-blue); }
+.dailyplank-coach-description p,.dailyplank-record-copy > div p { margin: 0; color: var(--dp-muted); font-size: 13px; line-height: 1.85; }
+.dailyplank-cue-board { overflow: hidden; border: 1px solid #cbd2e3; background: var(--dp-paper); box-shadow: 13px 16px 0 rgba(56,89,217,.065); }
+.dailyplank-cue-head { display: flex; min-height: 58px; padding: 0 19px; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--dp-line); color: var(--dp-muted); font: 700 8px monospace; letter-spacing: .08em; }
+.dailyplank-cue-head i { padding: 5px 7px; border-radius: 99px; background: #e4f5e8; color: var(--dp-green); font-style: normal; }
+.dailyplank-cue-timeline { position: relative; padding: 12px 21px 6px; }
+.dailyplank-cue-timeline::before { position: absolute; top: 35px; bottom: 32px; left: 81px; width: 1px; background: var(--dp-line); content: ""; }
+.dailyplank-cue-timeline article { position: relative; z-index: 1; display: grid; min-height: 101px; grid-template-columns: 46px 16px 1fr; gap: 13px; align-items: center; }
+.dailyplank-cue-timeline time { color: var(--dp-faint); font: 700 9px monospace; }
+.dailyplank-cue-timeline .cue-dot { display: block; width: 12px; height: 12px; border: 3px solid white; border-radius: 50%; background: var(--dp-blue); box-shadow: 0 0 0 1px var(--dp-blue); }
+.dailyplank-cue-timeline .cue-2 { background: var(--dp-green); box-shadow: 0 0 0 1px var(--dp-green); }
+.dailyplank-cue-timeline .cue-3 { background: var(--dp-coral); box-shadow: 0 0 0 1px var(--dp-coral); }
+.dailyplank-cue-timeline small { color: var(--dp-blue); font: 800 8px monospace; letter-spacing: .13em; }
+.dailyplank-cue-timeline p { margin: 7px 0 0; color: var(--dp-ink); font-size: 12px; font-weight: 700; line-height: 1.55; }
+.dailyplank-wave { display: flex; height: 74px; padding: 0 21px; align-items: center; gap: 5px; border-top: 1px solid var(--dp-line); background: #f9faff; }
+.dailyplank-wave i { width: 3px; height: 12px; border-radius: 3px; background: var(--dp-blue); opacity: .32; }
+.dailyplank-wave i:nth-child(3n) { height: 28px; opacity: .72; }
+.dailyplank-wave i:nth-child(5n) { height: 42px; opacity: 1; }
+.dailyplank-wave i:nth-child(7n) { height: 20px; background: var(--dp-green); }
+
+.dailyplank-record { display: grid; padding: 120px 0; border-bottom: 1px solid var(--dp-line); grid-template-columns: minmax(430px, .95fr) minmax(0, .88fr); gap: clamp(60px, 10vw, 130px); align-items: center; }
+.dailyplank-history-board { border: 1px solid #cbd2e3; background: var(--dp-paper); box-shadow: -13px 16px 0 rgba(56,89,217,.065); }
+.dailyplank-history-head { display: flex; min-height: 58px; padding: 0 19px; border-bottom: 1px solid var(--dp-line); align-items: center; justify-content: space-between; }
+.dailyplank-history-head span { color: var(--dp-ink); font-size: 13px; font-weight: 900; }
+.dailyplank-history-head b { color: var(--dp-faint); font: 700 8px monospace; }
+.dailyplank-week { display: grid; padding: 22px 17px; grid-template-columns: repeat(7,1fr); gap: 7px; }
+.dailyplank-week > span { display: flex; min-width: 0; height: 79px; flex-direction: column; align-items: center; justify-content: center; gap: 6px; border: 1px solid var(--dp-line); border-radius: 15px; background: #fafbfe; }
+.dailyplank-week small { color: var(--dp-faint); font-size: 9px; }
+.dailyplank-week b { color: var(--dp-muted); font: 800 11px monospace; }
+.dailyplank-week i { display: grid; width: 18px; height: 18px; border-radius: 50%; place-items: center; color: white; font-size: 9px; font-style: normal; }
+.dailyplank-week .is-done { border-color: #bdc9fa; background: var(--dp-blue-soft); }
+.dailyplank-week .is-done small,.dailyplank-week .is-done b { color: var(--dp-blue-dark); }
+.dailyplank-week .is-done i { background: var(--dp-blue); }
+.dailyplank-stats { display: grid; margin: 0 17px 18px; grid-template-columns: 1fr 1fr; border: 1px solid var(--dp-line); }
+.dailyplank-stats div { display: flex; min-height: 86px; padding: 15px; flex-direction: column; justify-content: center; gap: 5px; }
+.dailyplank-stats div + div { border-left: 1px solid var(--dp-line); }
+.dailyplank-stats span { color: var(--dp-faint); font-size: 10px; font-weight: 700; }
+.dailyplank-stats strong { color: var(--dp-ink); font: 800 26px monospace; }
+.dailyplank-mascot-message { display: grid; min-height: 87px; padding: 0 18px; border-top: 1px solid var(--dp-line); grid-template-columns: 74px 1fr; align-items: center; background: #fff9e8; }
+.dailyplank-mascot-message p { position: relative; margin: 0; padding: 12px 14px; border: 1px solid #eadfbf; border-radius: 14px; background: white; color: var(--dp-ink); font-size: 11px; font-weight: 800; }
+.dailyplank-mascot-message p::before { position: absolute; top: 50%; left: -7px; width: 12px; height: 12px; border-bottom: 1px solid #eadfbf; border-left: 1px solid #eadfbf; background: white; content: ""; transform: translateY(-50%) rotate(45deg); }
+
+.dailyplank-final { padding: 140px 0 130px; text-align: center; }
+.dailyplank-final > p { margin: 0 0 23px; color: var(--dp-blue); font: 800 9px monospace; letter-spacing: .18em; }
+.dailyplank-final h2 { max-width: 850px; margin-inline: auto; }
+.dailyplank-final > div { display: flex; margin-top: 40px; justify-content: center; gap: 10px; }
+.dailyplank-footer { border-color: var(--dp-line); color: var(--dp-faint); }
+.dailyplank-footer .footer-node { border-color: rgba(56,89,217,.42); color: var(--dp-blue); }
+
+html[lang="en"] .dailyplank-hero-copy h1 { font-size: clamp(76px,8vw,110px); }
+html[lang="ja"] .dailyplank-hero-copy h1 { font-size: clamp(68px,7.2vw,99px); }
+
+@keyframes dailyplank-orbit { to { transform: rotate(360deg); } }
+@keyframes dailyplank-sweat { 0%,100% { opacity: .2; transform: translateY(-3px) rotate(18deg); } 50% { opacity: 1; transform: translateY(2px) rotate(18deg); } }
+
+@media (max-width: 1000px) {
+  .dailyplank-hero { min-height: auto; grid-template-columns: 1fr; }
+  .dailyplank-console { width: min(100%, 570px); justify-self: center; }
+  .dailyplank-coach,.dailyplank-record { grid-template-columns: 1fr; }
+  .dailyplank-cue-board,.dailyplank-history-board { width: min(100%, 650px); }
+  .dailyplank-record-copy { order: -1; }
+}
+
+@media (max-width: 760px) {
+  .dailyplank-hero { padding: 70px 0 78px; }
+  .dailyplank-kicker { margin-bottom: 42px; }
+  .dailyplank-hero-copy h1 { font-size: clamp(72px,18vw,102px); }
+  html[lang="en"] .dailyplank-hero-copy h1,html[lang="ja"] .dailyplank-hero-copy h1 { font-size: clamp(66px,17vw,94px); }
+  .dailyplank-section-intro { grid-template-columns: 1fr; gap: 26px; }
+  .dailyplank-routines,.dailyplank-coach,.dailyplank-record { padding: 82px 0; }
+  .dailyplank-routine-rail article { grid-template-columns: 110px 1fr; }
+  .dailyplank-routine-rail article > i { display: none; }
+  .dailyplank-section-intro h2,.dailyplank-coach h2,.dailyplank-record h2,.dailyplank-final h2 { font-size: 42px; }
+  .dailyplank-final { padding: 100px 0; }
+}
+
+@media (max-width: 520px) {
+  .dailyplank-kicker { align-items: flex-start; flex-direction: column; gap: 11px; }
+  .dailyplank-hero-copy h2 { margin-top: 43px; }
+  .dailyplank-actions { align-items: stretch; flex-direction: column; }
+  .dailyplank-actions > * { width: 100%; }
+  .dailyplank-status { justify-content: center; }
+  .dailyplank-console { min-height: 590px; margin-top: 20px; }
+  .dailyplank-console::before { inset: 60px 0 25px; }
+  .dailyplank-phone { width: min(100%, 310px); min-height: 570px; border-width: 6px; }
+  .dailyplank-timer { width: 172px; height: 172px; margin-top: 23px; }
+  .dailyplank-timer strong { font-size: 48px; }
+  .dailyplank-mascot-stage { height: 88px; }
+  .dailyplank-console-note { z-index: 3; width: 83px; min-height: 60px; padding: 9px; }
+  .dailyplank-console-note b { font-size: 17px; }
+  .dailyplank-console-note i { display: none; }
+  .note-voice { top: 118px; left: -5px; }
+  .note-haptic { right: -5px; bottom: 89px; }
+  .dailyplank-routine-rail article { min-height: 154px; grid-template-columns: 83px 1fr; gap: 18px; }
+  .dailyplank-minute strong { font-size: 51px; }
+  .dailyplank-routine-rail h3 { font-size: 19px; }
+  .dailyplank-coach,.dailyplank-record { gap: 48px; }
+  .dailyplank-coach-description,.dailyplank-record-copy > div { grid-template-columns: 27px 1fr; gap: 12px; }
+  .dailyplank-coach-description > i,.dailyplank-record-copy > div > i { width: 23px; }
+  .dailyplank-cue-head { padding-inline: 13px; }
+  .dailyplank-cue-timeline { padding-inline: 13px; }
+  .dailyplank-cue-timeline::before { left: 73px; }
+  .dailyplank-cue-timeline article { grid-template-columns: 44px 16px 1fr; gap: 10px; }
+  .dailyplank-wave { padding-inline: 13px; gap: 4px; }
+  .dailyplank-history-head { padding-inline: 13px; }
+  .dailyplank-week { padding: 15px 8px; gap: 4px; }
+  .dailyplank-week > span { height: 70px; border-radius: 11px; }
+  .dailyplank-week small { font-size: 8px; }
+  .dailyplank-week b { font-size: 9px; }
+  .dailyplank-week i { width: 15px; height: 15px; }
+  .dailyplank-stats { margin-inline: 8px; }
+  .dailyplank-mascot-message { padding-inline: 8px; grid-template-columns: 65px 1fr; }
+  .dailyplank-final > div { align-items: stretch; flex-direction: column; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dailyplank-console::before,.dailyplank-mascot-sweat { animation: none; }
+}

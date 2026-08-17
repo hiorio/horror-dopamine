@@ -7,10 +7,12 @@ const pages = [
   ["../dist/channels/index.html", "콘텐츠 채널 | Link Flower"],
   ["../dist/apps/index.html", "앱 개발. | Link Flower"],
   ["../dist/apps/dohwaji/index.html", "도화지 | 함께 만드는 모임 동선 지도"],
+  ["../dist/apps/timeflower/index.html", "TimeFlower | 함께 쓰는 공유 캘린더"],
+  ["../dist/apps/daily-plank/index.html", "매일 플랭크 | 5분부터 시작하는 플랭크 가이드"],
   ["../dist/horror/index.html", "공포도파민 | Horror Dopamine"],
 ];
 
-test("루트와 세 하위 노드의 정적 페이지가 생성된다", async () => {
+test("루트와 하위 노드의 정적 페이지가 생성된다", async () => {
   for (const [path, title] of pages) {
     const html = await readFile(new URL(path, import.meta.url), "utf8");
     assert.match(html, /<html lang="ko">/);
@@ -30,8 +32,12 @@ test("루트와 세 하위 노드의 정적 페이지가 생성된다", async ()
   assert.match(javascript, /https:\/\/dohwaji\.app/);
   assert.doesNotMatch(javascript, /map-line-production\.up\.railway\.app/);
   assert.match(javascript, /TimeRoots/);
+  assert.match(javascript, /TimeFlower/);
+  assert.match(javascript, /매일 플랭크/);
   assert.match(javascript, /ROOT NODE 00/);
   assert.match(javascript, /APP DEVELOPMENT\./);
   assert.match(javascript, /다음 모임은 도화지 한 장으로 정리하세요/);
   assert.match(javascript, /apps\/dohwaji/);
+  assert.match(javascript, /apps\/timeflower/);
+  assert.match(javascript, /apps\/daily-plank/);
 });

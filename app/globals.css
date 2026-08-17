@@ -1345,6 +1345,16 @@ h3 {
   --product-accent-soft: rgba(242, 182, 93, 0.14);
 }
 
+.product-apricot {
+  --product-accent: #e47a55;
+  --product-accent-soft: rgba(228, 122, 85, 0.14);
+}
+
+.product-cobalt {
+  --product-accent: #6f8cff;
+  --product-accent-soft: rgba(111, 140, 255, 0.15);
+}
+
 .product-visual {
   position: relative;
   display: grid;
@@ -1440,6 +1450,63 @@ h3 {
   border-radius: 50%;
 }
 
+.product-apricot .product-glyph {
+  border-radius: 24%;
+}
+
+.product-apricot .product-glyph i {
+  position: absolute;
+  display: block;
+  height: 15px;
+  border-radius: 4px;
+  background: var(--product-accent);
+}
+
+.product-apricot .product-glyph i:nth-child(1) { top: 47px; left: 25px; width: 96px; }
+.product-apricot .product-glyph i:nth-child(2) { top: 79px; left: 47px; width: 108px; opacity: 0.72; }
+.product-apricot .product-glyph i:nth-child(3) { top: 111px; left: 73px; width: 70px; opacity: 0.45; }
+
+.product-cobalt .product-glyph { border-radius: 50%; }
+.product-cobalt .product-glyph::before {
+  position: absolute;
+  inset: 22px;
+  border: 12px solid rgba(111, 140, 255, 0.2);
+  border-top-color: var(--product-accent);
+  border-right-color: var(--product-accent);
+  border-radius: 50%;
+  content: "";
+  transform: rotate(18deg);
+}
+.product-cobalt .product-glyph em {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  color: var(--product-accent);
+  font: 800 29px monospace;
+  font-style: normal;
+  letter-spacing: -0.08em;
+  transform: translate(-50%, -50%);
+}
+.product-cobalt .product-glyph b {
+  position: absolute;
+  inset: 47px;
+  border-radius: 50%;
+  background: #0c1111;
+}
+.product-cobalt .product-glyph i {
+  position: absolute;
+  z-index: 3;
+  top: 35px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--product-accent);
+  box-shadow: 0 0 10px var(--product-accent);
+}
+.product-cobalt .product-glyph i:nth-of-type(1) { left: 30px; }
+.product-cobalt .product-glyph i:nth-of-type(2) { right: 30px; opacity: .45; }
+
 .product-copy {
   display: flex;
   flex-direction: column;
@@ -1471,6 +1538,15 @@ h3 {
   border-radius: 50%;
   background: #73a879;
   box-shadow: 0 0 8px rgba(115, 168, 121, 0.7);
+}
+
+.live-badge.is-building {
+  color: #d49b58;
+}
+
+.live-badge.is-building i {
+  background: #d49b58;
+  box-shadow: 0 0 8px rgba(212, 155, 88, 0.55);
 }
 
 .product-copy h3 {

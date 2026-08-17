@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { productApps } from "./apps";
 import { detectLocale, localeLabels, supportedLocales, ui, type Locale } from "./i18n";
 import { defaultNodeId, nodes } from "./nodes";
+import { DailyPlankPage, dailyPlankCopy } from "./DailyPlankPage";
+import { TimeFlowerPage, timeFlowerCopy } from "./TimeFlowerPage";
 
-type RouteId = "root" | "channels" | "apps" | "dohwaji" | "horror";
+type RouteId = "root" | "channels" | "apps" | "dohwaji" | "timeflower" | "dailyplank" | "horror";
 type Copy = (typeof ui)[Locale];
 
 const basePath = import.meta.env.BASE_URL;
@@ -11,17 +13,21 @@ const basePath = import.meta.env.BASE_URL;
 function routeHref(route: RouteId) {
   if (route === "root") return basePath;
   if (route === "dohwaji") return `${basePath}apps/dohwaji/`;
+  if (route === "timeflower") return `${basePath}apps/timeflower/`;
+  if (route === "dailyplank") return `${basePath}apps/daily-plank/`;
   return `${basePath}${route}/`;
 }
 
 function getRoute(): RouteId {
   const relativePath = window.location.pathname.slice(basePath.length).replace(/^\/+|\/+$/g, "");
   if (relativePath === "apps/dohwaji") return "dohwaji";
+  if (relativePath === "apps/timeflower") return "timeflower";
+  if (relativePath === "apps/daily-plank") return "dailyplank";
   if (relativePath === "channels" || relativePath === "apps" || relativePath === "horror") return relativePath;
   return "root";
 }
 
-const routeNumbers: Record<RouteId, string> = { root: "00", channels: "02-A", apps: "01", dohwaji: "01-A", horror: "02" };
+const routeNumbers: Record<RouteId, string> = { root: "00", channels: "02-A", apps: "01", dohwaji: "01-A", timeflower: "01-C", dailyplank: "01-D", horror: "02" };
 
 function SiteHeader({ activeRoute, copy, locale, setLocale }: {
   activeRoute: RouteId;
@@ -44,7 +50,7 @@ function SiteHeader({ activeRoute, copy, locale, setLocale }: {
       <div className="network-controls">
         <nav className="node-switcher" aria-label={copy.nodeNetworkLabel}>
           {routes.map((route) => (
-            <a className={activeRoute === route.id || (activeRoute === "dohwaji" && route.id === "apps") ? "is-active" : ""} href={routeHref(route.id)} key={route.id}>
+            <a className={activeRoute === route.id || ((activeRoute === "dohwaji" || activeRoute === "timeflower" || activeRoute === "dailyplank") && route.id === "apps") ? "is-active" : ""} href={routeHref(route.id)} key={route.id}>
               {routeNumbers[route.id]} <span>{route.label}</span>
             </a>
           ))}
@@ -196,15 +202,22 @@ function AppsPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
               <article className={`product-card product-${app.accent}`} key={app.id}>
                 <div className="product-visual" aria-hidden="true">
                   <span className="product-index">APP_{app.order}</span>
-                  <div className="product-glyph">{app.id === "dohwaji" ? <><i /><i /><i /><b /></> : <><em>12</em><i /><i /><b /></>}</div>
+                  <div className="product-glyph">
+                    {app.id === "dohwaji" && <><i /><i /><i /><b /></>}
+                    {app.id === "timeroots" && <><em>12</em><i /><i /><b /></>}
+                    {app.id === "timeflower" && <><i /><i /><i /></>}
+                    {app.id === "dailyplank" && <><em>5:00</em><i /><i /><b /></>}
+                  </div>
                   <span className="product-code">{app.code}</span>
                 </div>
                 <div className="product-copy">
-                  <div className="product-meta"><span>{app.platforms.join(" + ")}</span><span className="live-badge"><i />{copy.appStatus}</span></div>
+                  <div className="product-meta"><span>{app.platforms.join(" + ")}</span><span className={`live-badge ${app.status === "building" ? "is-building" : ""}`}><i />{app.status === "building" ? copy.appBuilding : copy.appStatus}</span></div>
                   <h3>{content.displayName}</h3><strong className="product-tagline">{content.tagline}</strong>
                   <p>{content.description}</p><ul>{content.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
                   <div className="product-links">
                     {app.id === "dohwaji" && <a className="product-detail-link" href={routeHref("dohwaji")}>{copy.appDetail} <span aria-hidden="true">→</span></a>}
+                    {app.id === "timeflower" && <a className="product-detail-link" href={routeHref("timeflower")}>{copy.appDetail} <span aria-hidden="true">→</span></a>}
+                    {app.id === "dailyplank" && <a className="product-detail-link" href={routeHref("dailyplank")}>{copy.appDetail} <span aria-hidden="true">→</span></a>}
                     {app.links.map((link) => <a href={link.href} key={link.kind} target="_blank" rel="noreferrer"
                       aria-label={`${copy.appLinkLabel(content.displayName)} — ${linkLabel(link.kind)}`}>
                       {linkLabel(link.kind)} <span aria-hidden="true">↗</span>
@@ -338,7 +351,9 @@ export default function App() {
   useEffect(() => {
     const metadata = {
       root: [copy.rootPageTitle, copy.rootPageDescription], channels: [copy.channelsPageTitle, copy.channelsPageDescription],
-      apps: [copy.appsPageTitle, copy.appsPageDescription], dohwaji: [copy.dohwajiPageTitle, copy.dohwajiPageDescription], horror: [copy.horrorPageTitle, copy.horrorPageDescription],
+      apps: [copy.appsPageTitle, copy.appsPageDescription], dohwaji: [copy.dohwajiPageTitle, copy.dohwajiPageDescription],
+      timeflower: [timeFlowerCopy[locale].pageTitle, timeFlowerCopy[locale].pageDescription],
+      dailyplank: [dailyPlankCopy[locale].pageTitle, dailyPlankCopy[locale].pageDescription], horror: [copy.horrorPageTitle, copy.horrorPageDescription],
     }[route];
     document.documentElement.lang = locale;
     document.title = metadata[0];
@@ -349,6 +364,8 @@ export default function App() {
   if (route === "channels") return <ChannelsPage copy={copy} locale={locale} setLocale={setLocale} />;
   if (route === "apps") return <AppsPage copy={copy} locale={locale} setLocale={setLocale} />;
   if (route === "dohwaji") return <DohwajiPage copy={copy} locale={locale} setLocale={setLocale} />;
+  if (route === "timeflower") return <TimeFlowerPage header={<SiteHeader activeRoute="timeflower" copy={copy} locale={locale} setLocale={setLocale} />} locale={locale} appsHref={routeHref("apps")} />;
+  if (route === "dailyplank") return <DailyPlankPage header={<SiteHeader activeRoute="dailyplank" copy={copy} locale={locale} setLocale={setLocale} />} locale={locale} appsHref={routeHref("apps")} />;
   if (route === "horror") return <HorrorPage copy={copy} locale={locale} setLocale={setLocale} />;
   return <RootPage copy={copy} locale={locale} setLocale={setLocale} />;
 }

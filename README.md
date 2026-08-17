@@ -6,8 +6,10 @@
 ## 노드 구조
 
 - `/link-flower/`: 최상위 메인 노드
-- `/link-flower/apps/`: NODE_01 앱 개발. — 도화지, TimeRoots
+- `/link-flower/apps/`: NODE_01 앱 개발. — 도화지, TimeRoots, TimeFlower, 매일 플랭크
 - `/link-flower/apps/dohwaji/`: NODE_01-A 도화지 제품 소개 — 공식 서비스 `https://dohwaji.app`
+- `/link-flower/apps/timeflower/`: NODE_01-C TimeFlower 제품 소개 — 공유 캘린더, 출시 준비 중
+- `/link-flower/apps/daily-plank/`: NODE_01-D 매일 플랭크 제품 소개 — 5·7·10분 가이드 루틴, 테스트앱 준비 중
 - `/link-flower/horror/`: NODE_02 공포도파민 브랜드
 - `/link-flower/channels/`: NODE_02-A 공포도파민의 외부 채널 연결 페이지
 

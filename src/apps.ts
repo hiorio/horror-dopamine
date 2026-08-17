@@ -12,7 +12,8 @@ export type ProductApp = {
   order: string;
   code: string;
   platforms: string[];
-  accent: "cyan" | "amber";
+  accent: "cyan" | "amber" | "apricot" | "cobalt";
+  status?: "live" | "building";
   content: Record<Locale, LocalizedAppCopy>;
   links: Array<{
     kind: "web" | "appStore" | "support";
@@ -82,5 +83,63 @@ export const productApps: ProductApp[] = [
       { kind: "appStore", href: "https://apps.apple.com/app/id6798457487" },
       { kind: "support", href: "https://hiorio.github.io/timeroots-support/" },
     ],
+  },
+  {
+    id: "timeflower",
+    order: "03",
+    code: "SHARE / PLAN / TALK",
+    platforms: ["iOS", "ANDROID"],
+    accent: "apricot",
+    status: "building",
+    content: {
+      ko: {
+        displayName: "TimeFlower",
+        tagline: "함께 쓰는 일정이 피어나는 캘린더",
+        description: "가족, 연인, 친구가 한 장의 달력을 공유하고 일정마다 장소와 준비물, 대화를 함께 쌓는 공유 캘린더입니다.",
+        features: ["게스트로 바로 시작", "초대 링크로 참여", "일정별 대화와 변경 기록"],
+      },
+      en: {
+        displayName: "TimeFlower",
+        tagline: "A calendar where shared plans grow",
+        description: "A shared calendar where families, couples, and friends plan together and keep places, checklists, and conversations inside every event.",
+        features: ["Start instantly as a guest", "Join with an invite link", "Event threads and change history"],
+      },
+      ja: {
+        displayName: "TimeFlower",
+        tagline: "一緒に使う予定が育つカレンダー",
+        description: "家族、恋人、友人が一つのカレンダーを共有し、予定ごとに場所や持ち物、会話を積み重ねる共有カレンダーです。",
+        features: ["ゲストですぐ開始", "招待リンクで参加", "予定ごとの会話と変更履歴"],
+      },
+    },
+    links: [],
+  },
+  {
+    id: "dailyplank",
+    order: "04",
+    code: "HOLD / GUIDE / REPEAT",
+    platforms: ["iOS", "ANDROID", "WEB DEMO"],
+    accent: "cobalt",
+    status: "building",
+    content: {
+      ko: {
+        displayName: "매일 플랭크",
+        tagline: "5분부터 이어 가는 매일의 코어 루틴",
+        description: "5·7·10분 루틴을 고르면 음성, 효과음, 진동과 자동 휴식이 다음 자세를 안내하고 운동 기록까지 남기는 플랭크 가이드입니다.",
+        features: ["5·7·10분 가이드 루틴", "음성·진동과 자동 휴식", "연속 기록과 성장 마스코트"],
+      },
+      en: {
+        displayName: "Daily Plank",
+        tagline: "A daily core routine starting at five minutes",
+        description: "Choose a 5, 7, or 10-minute routine and follow voice, sound, haptic, and automatic rest cues while the app keeps your workout history.",
+        features: ["5, 7, and 10-minute routines", "Voice, haptics, and automatic rest", "Streaks and a growing mascot"],
+      },
+      ja: {
+        displayName: "毎日プランク",
+        tagline: "5分から続ける毎日のコアルーティン",
+        description: "5・7・10分のルーティンを選ぶと、音声、効果音、振動、自動休憩が次の姿勢を案内し、運動記録も残すプランクガイドです。",
+        features: ["5・7・10分のガイド", "音声・振動と自動休憩", "連続記録と成長するマスコット"],
+      },
+    },
+    links: [{ kind: "web", href: "https://hiorio.github.io/Daily-Plank/" }],
   },
 ];
