@@ -68,8 +68,8 @@ function SiteHeader({ activeRoute, copy, locale, setLocale }: {
 
 function RootPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; setLocale: (locale: Locale) => void }) {
   const workAreas = [
-    { id: "apps" as const, code: "PRODUCTS / DESIGN & BUILD", count: `${String(productApps.length).padStart(2, "0")} PRODUCTS`, title: copy.appsCardTitle, description: copy.appsCardDescription },
-    { id: "horror" as const, code: "CONTENT / HORROR", count: "01 BRAND", title: copy.horrorCardTitle, description: copy.horrorCardDescription },
+    { id: "apps" as const, code: "APPS / SERVICES", count: `${String(productApps.length).padStart(2, "0")} LIVE APPS`, title: copy.appsCardTitle, description: copy.appsCardDescription },
+    { id: "horror" as const, code: "STORIES / SHORTS", count: "01 CONTENT BRAND", title: copy.horrorCardTitle, description: copy.horrorCardDescription },
   ];
 
   return (
@@ -89,7 +89,7 @@ function RootPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
         </div>
 
         <aside className="maker-card" aria-label={copy.rootKicker}>
-          <div className="maker-card-top"><span>HIORIO / 2026</span><i /></div>
+          <div className="maker-card-top"><span>HIORIO / MAKER</span><i /></div>
           <div className="maker-monogram" aria-hidden="true">H</div>
           <p>{copy.rootFooter}</p>
           <dl>
@@ -117,7 +117,7 @@ function RootPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
                 )}
               </div>
               <div className="work-card-copy">
-                <div className="work-card-meta"><span>{work.count}</span><span>INDEPENDENT</span></div>
+                <div className="work-card-meta"><span>{work.count}</span><span>BY HIORIO</span></div>
                 <strong>{work.title}</strong><p>{work.description}</p>
                 <span className="root-work-cta">{copy.enterNode} <b aria-hidden="true">→</b></span>
               </div>
