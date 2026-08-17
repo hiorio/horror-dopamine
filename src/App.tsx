@@ -182,7 +182,7 @@ function ChannelsPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale;
 
 function AppsPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; setLocale: (locale: Locale) => void }) {
   const linkLabel = (kind: "web" | "appStore" | "support") => ({ web: copy.appLinkWeb, appStore: copy.appLinkAppStore, support: copy.appLinkSupport })[kind];
-  const liveCount = productApps.filter((app) => app.status !== "building").length;
+  const liveCount = productApps.filter((app) => app.status === "live").length;
   const detailHref = (id: string) => id === "dohwaji" ? routeHref("dohwaji") : id === "timeflower" ? routeHref("timeflower") : id === "dailyplank" ? routeHref("dailyplank") : undefined;
 
   return (
@@ -202,10 +202,10 @@ function AppsPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
             <i className="garden-stem" aria-hidden="true" />
             {productApps.map((app) => {
               const content = app.content[locale];
-              return <div className={`garden-bloom bloom-${app.order} garden-${app.accent}`} key={app.id}><span>{app.order}</span><img alt="" src={`${basePath}${app.icon}`} /><div><strong>{content.displayName}</strong><small>{app.status === "building" ? copy.appBuilding : copy.appStatus}</small></div></div>;
+              return <div className={`garden-bloom bloom-${app.order} garden-${app.accent}`} key={app.id}><span>{app.order}</span><img alt="" src={`${basePath}${app.icon}`} /><div><strong>{content.displayName}</strong><small>{copy.appStatus}</small></div></div>;
             })}
           </div>
-          <div className="garden-foot"><span>{copy.appStatus} {String(liveCount).padStart(2, "0")}</span><span>{copy.appBuilding} {String(productApps.length - liveCount).padStart(2, "0")}</span></div>
+          <div className="garden-foot"><span>{copy.appStatus} {String(liveCount).padStart(2, "0")}</span></div>
         </aside>
       </section>
 
@@ -235,7 +235,7 @@ function AppsPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
                 <div className="catalog-details">
                   <div className="catalog-meta">
                     <div>{app.platforms.map((platform) => <span key={platform}>{platform}</span>)}</div>
-                    <div><span>v{app.version}</span><span className={`catalog-status ${app.status === "building" ? "is-building" : ""}`}><i />{app.status === "building" ? copy.appBuilding : copy.appStatus}</span></div>
+                    <div><span>v{app.version}</span><span className="catalog-status"><i />{copy.appStatus}</span></div>
                   </div>
                   <p>{content.description}</p>
                   <ul>{content.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>

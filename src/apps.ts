@@ -15,7 +15,7 @@ export type ProductApp = {
   version: string;
   platforms: string[];
   accent: "cyan" | "amber" | "apricot" | "cobalt" | "sky";
-  status?: "live" | "building";
+  status: "live";
   content: Record<Locale, LocalizedAppCopy>;
   links: Array<{
     kind: "web" | "appStore" | "support";
@@ -32,6 +32,7 @@ export const productApps: ProductApp[] = [
     version: "1.2",
     platforms: ["WEB", "iOS"],
     accent: "cyan",
+    status: "live",
     content: {
       ko: {
         displayName: "도화지",
@@ -65,6 +66,7 @@ export const productApps: ProductApp[] = [
     version: "1.1",
     platforms: ["iOS", "WIDGET"],
     accent: "amber",
+    status: "live",
     content: {
       ko: {
         displayName: "TimeRoots",
@@ -98,7 +100,7 @@ export const productApps: ProductApp[] = [
     version: "1.0.0",
     platforms: ["iOS", "ANDROID"],
     accent: "apricot",
-    status: "building",
+    status: "live",
     content: {
       ko: {
         displayName: "TimeFlower",
@@ -129,7 +131,7 @@ export const productApps: ProductApp[] = [
     version: "0.2.1",
     platforms: ["iOS", "ANDROID", "WEB DEMO"],
     accent: "cobalt",
-    status: "building",
+    status: "live",
     content: {
       ko: {
         displayName: "매일 플랭크",
@@ -160,6 +162,7 @@ export const productApps: ProductApp[] = [
     version: "1.1.0",
     platforms: ["WEB", "iOS", "ANDROID"],
     accent: "sky",
+    status: "live",
     content: {
       ko: {
         displayName: "비온다매",
