@@ -175,6 +175,8 @@ function ChannelsPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale;
 
 function AppsPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; setLocale: (locale: Locale) => void }) {
   const linkLabel = (kind: "web" | "appStore" | "support") => ({ web: copy.appLinkWeb, appStore: copy.appLinkAppStore, support: copy.appLinkSupport })[kind];
+  const liveCount = productApps.filter((app) => app.status !== "building").length;
+  const detailHref = (id: string) => id === "dohwaji" ? routeHref("dohwaji") : id === "timeflower" ? routeHref("timeflower") : id === "dailyplank" ? routeHref("dailyplank") : undefined;
 
   return (
     <main className="site-shell development-shell">
@@ -187,7 +189,16 @@ function AppsPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
           <h1 id="apps-page-title" className="development-title">{copy.appsTitle}</h1>
           <p className="hero-description">{copy.appsDescription.map((line) => <span key={line}>{line}<br /></span>)}</p>
         </div>
-        <div className="development-mark" aria-hidden="true"><span>&lt;/&gt;</span><small>NODE_01<br />PRODUCT DEVELOPMENT</small></div>
+        <div className="development-register" aria-label={copy.appsSectionTitle}>
+          <div className="register-head"><span>PRODUCT REGISTER</span><b>{String(productApps.length).padStart(2, "0")}</b></div>
+          <div className="register-list">
+            {productApps.map((app) => {
+              const content = app.content[locale];
+              return <div className={`register-item register-${app.accent}`} key={app.id}><span>{app.order}</span><img alt="" src={`${basePath}${app.icon}`} /><strong>{content.displayName}</strong><small>{app.status === "building" ? copy.appBuilding : copy.appStatus}</small></div>;
+            })}
+          </div>
+          <div className="register-foot"><span>LIVE {String(liveCount).padStart(2, "0")}</span><span>BUILD {String(productApps.length - liveCount).padStart(2, "0")}</span></div>
+        </div>
       </section>
 
       <section className="app-products development-products" aria-labelledby="app-products-title">
@@ -195,29 +206,33 @@ function AppsPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
           <div><span className="section-index">01</span><h2 id="app-products-title">{copy.appsSectionTitle}</h2></div>
           <p>{copy.appsSectionHint.toUpperCase()}</p>
         </div>
-        <div className="product-list">
+        <div className="product-catalog">
           {productApps.map((app) => {
             const content = app.content[locale];
+            const internalHref = detailHref(app.id);
             return (
-              <article className={`product-card product-${app.accent}`} key={app.id}>
-                <div className="product-visual" aria-hidden="true">
-                  <span className="product-index">APP_{app.order}</span>
-                  <div className="product-glyph">
-                    {app.id === "dohwaji" && <><i /><i /><i /><b /></>}
-                    {app.id === "timeroots" && <><em>12</em><i /><i /><b /></>}
-                    {app.id === "timeflower" && <><i /><i /><i /></>}
-                    {app.id === "dailyplank" && <><em>5:00</em><i /><i /><b /></>}
-                  </div>
-                  <span className="product-code">{app.code}</span>
+              <article className={`catalog-entry catalog-${app.accent}`} key={app.id}>
+                <div className="catalog-sequence">
+                  <span>APP_{app.order}</span>
+                  <i />
                 </div>
-                <div className="product-copy">
-                  <div className="product-meta"><span>{app.platforms.join(" + ")}</span><span className={`live-badge ${app.status === "building" ? "is-building" : ""}`}><i />{app.status === "building" ? copy.appBuilding : copy.appStatus}</span></div>
-                  <h3>{content.displayName}</h3><strong className="product-tagline">{content.tagline}</strong>
-                  <p>{content.description}</p><ul>{content.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
-                  <div className="product-links">
-                    {app.id === "dohwaji" && <a className="product-detail-link" href={routeHref("dohwaji")}>{copy.appDetail} <span aria-hidden="true">→</span></a>}
-                    {app.id === "timeflower" && <a className="product-detail-link" href={routeHref("timeflower")}>{copy.appDetail} <span aria-hidden="true">→</span></a>}
-                    {app.id === "dailyplank" && <a className="product-detail-link" href={routeHref("dailyplank")}>{copy.appDetail} <span aria-hidden="true">→</span></a>}
+                <div className="catalog-identity">
+                  <img className="catalog-icon" src={`${basePath}${app.icon}`} alt="" />
+                  <div>
+                    <span className="catalog-code">{app.code}</span>
+                    <h3>{content.displayName}</h3>
+                    <strong>{content.tagline}</strong>
+                  </div>
+                </div>
+                <div className="catalog-details">
+                  <div className="catalog-meta">
+                    <div>{app.platforms.map((platform) => <span key={platform}>{platform}</span>)}</div>
+                    <div><span>v{app.version}</span><span className={`catalog-status ${app.status === "building" ? "is-building" : ""}`}><i />{app.status === "building" ? copy.appBuilding : copy.appStatus}</span></div>
+                  </div>
+                  <p>{content.description}</p>
+                  <ul>{content.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>
+                  <div className="catalog-links">
+                    {internalHref && <a className="catalog-detail-link" href={internalHref}>{copy.appDetail} <span aria-hidden="true">→</span></a>}
                     {app.links.map((link) => <a href={link.href} key={link.kind} target="_blank" rel="noreferrer"
                       aria-label={`${copy.appLinkLabel(content.displayName)} — ${linkLabel(link.kind)}`}>
                       {linkLabel(link.kind)} <span aria-hidden="true">↗</span>

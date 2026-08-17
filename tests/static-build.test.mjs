@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile, readdir } from "node:fs/promises";
+import { readFile, readdir, stat } from "node:fs/promises";
 import test from "node:test";
 
 const pages = [
@@ -10,6 +10,13 @@ const pages = [
   ["../dist/apps/timeflower/index.html", "TimeFlower | 함께 쓰는 공유 캘린더"],
   ["../dist/apps/daily-plank/index.html", "매일 플랭크 | 5분부터 시작하는 플랭크 가이드"],
   ["../dist/horror/index.html", "공포도파민 | Horror Dopamine"],
+];
+
+const operatingIcons = [
+  "../dist/app-icons/dohwaji.jpg",
+  "../dist/app-icons/timeroots.jpg",
+  "../dist/app-icons/timeflower.png",
+  "../dist/app-icons/daily-plank.png",
 ];
 
 test("루트와 하위 노드의 정적 페이지가 생성된다", async () => {
@@ -40,4 +47,14 @@ test("루트와 하위 노드의 정적 페이지가 생성된다", async () => 
   assert.match(javascript, /apps\/dohwaji/);
   assert.match(javascript, /apps\/timeflower/);
   assert.match(javascript, /apps\/daily-plank/);
+
+  for (const path of operatingIcons) {
+    const icon = await stat(new URL(path, import.meta.url));
+    assert.ok(icon.size > 1000, `${path} should contain the operating app artwork`);
+  }
+
+  assert.match(javascript, /app-icons\/dohwaji\.jpg/);
+  assert.match(javascript, /app-icons\/timeroots\.jpg/);
+  assert.match(javascript, /app-icons\/timeflower\.png/);
+  assert.match(javascript, /app-icons\/daily-plank\.png/);
 });

@@ -11,6 +11,8 @@ export type ProductApp = {
   id: string;
   order: string;
   code: string;
+  icon: string;
+  version: string;
   platforms: string[];
   accent: "cyan" | "amber" | "apricot" | "cobalt";
   status?: "live" | "building";
@@ -26,6 +28,8 @@ export const productApps: ProductApp[] = [
     id: "dohwaji",
     order: "01",
     code: "MAP / DRAW / SHARE",
+    icon: "app-icons/dohwaji.jpg",
+    version: "1.2",
     platforms: ["WEB", "iOS"],
     accent: "cyan",
     content: {
@@ -57,6 +61,8 @@ export const productApps: ProductApp[] = [
     id: "timeroots",
     order: "02",
     code: "TIME / TRACK / REFLECT",
+    icon: "app-icons/timeroots.jpg",
+    version: "1.1",
     platforms: ["iOS", "WIDGET"],
     accent: "amber",
     content: {
@@ -88,6 +94,8 @@ export const productApps: ProductApp[] = [
     id: "timeflower",
     order: "03",
     code: "SHARE / PLAN / TALK",
+    icon: "app-icons/timeflower.png",
+    version: "1.0.0",
     platforms: ["iOS", "ANDROID"],
     accent: "apricot",
     status: "building",
@@ -117,6 +125,8 @@ export const productApps: ProductApp[] = [
     id: "dailyplank",
     order: "04",
     code: "HOLD / GUIDE / REPEAT",
+    icon: "app-icons/daily-plank.png",
+    version: "0.2.1",
     platforms: ["iOS", "ANDROID", "WEB DEMO"],
     accent: "cobalt",
     status: "building",
