@@ -114,6 +114,8 @@ export const ui = {
     featuredHeading: ["가장 많이 본", "공포 기록부터"],
     featuredDescription: "공포도파민의 영상 보관함에서 새로운 기록과 오래 머문 이야기를 확인하세요.",
     featuredCta: "YOUTUBE 영상 보기",
+    horrorSocialTitle: "다른 신호 수신하기",
+    horrorSocialHint: "Instagram / TikTok",
     horrorFooter: "공포도파민 콘텐츠와 채널을 연결하는 브랜드 노드",
   },
   en: {
@@ -209,6 +211,8 @@ export const ui = {
     featuredHeading: ["Start with the", "most-viewed horrors"],
     featuredDescription: "Enter the Horror Dopamine archive to discover new records and stories viewers could not leave behind.",
     featuredCta: "WATCH ON YOUTUBE",
+    horrorSocialTitle: "Receive Other Signals",
+    horrorSocialHint: "Instagram / TikTok",
     horrorFooter: "The brand node connecting Horror Dopamine content and channels",
   },
   ja: {
@@ -304,6 +308,8 @@ export const ui = {
     featuredHeading: ["最も見られた", "恐怖の記録から"],
     featuredDescription: "ホラードーパミンの映像保管庫で、新しい記録と長く留まった物語を確認してください。",
     featuredCta: "YOUTUBEで見る",
+    horrorSocialTitle: "別の信号を受信する",
+    horrorSocialHint: "Instagram / TikTok",
     horrorFooter: "ホラードーパミンのコンテンツとチャンネルをつなぐブランドノード",
   },
 } satisfies Record<Locale, object>;

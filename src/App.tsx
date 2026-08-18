@@ -472,7 +472,21 @@ function HorrorPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; s
           <div className="record-visual" aria-hidden="true"><span className="visual-label">MOST VIEWED</span><div className="play-symbol">▶</div><span className="visual-time">ARCHIVE_001</span></div>
           <div className="featured-copy"><span className="featured-kicker">{copy.featuredKicker.toUpperCase()}</span><h3>{copy.featuredHeading[0]}<br />{copy.featuredHeading[1]}</h3><p>{copy.featuredDescription}</p><span className="featured-cta">{copy.featuredCta} <b aria-hidden="true">↗</b></span></div>
         </a>
-        <a className="internal-node-link horror-channel-link" href={routeHref("channels")}>{copy.channelsNode}<span aria-hidden="true">→</span></a>
+
+        <div className="horror-social-heading">
+          <div><span>02-A</span><h3>{copy.horrorSocialTitle}</h3></div>
+          <p>{copy.horrorSocialHint.toUpperCase()}</p>
+        </div>
+        <nav className="horror-social-grid" aria-label={copy.horrorSocialTitle}>
+          {node.channels.slice(1).map((channel) => (
+            <a className={`horror-social-card horror-social-${channel.mark.toLowerCase()}`} href={channel.href} key={channel.name}
+              target="_blank" rel="noreferrer" aria-label={copy.channelLinkLabel(channel.name)}>
+              <div className="horror-social-top"><span>SIGNAL_{channel.index}</span><span>LIVE ↗</span></div>
+              <div className="horror-social-mark" aria-hidden="true">{channel.mark}</div>
+              <div className="horror-social-copy"><strong>{channel.name}</strong><span>{channel.handle}</span><p>{channel.description[locale]}</p></div>
+            </a>
+          ))}
+        </nav>
       </section>
 
       <footer className="site-footer"><div><span className="footer-node">NODE_02</span><p>{copy.horrorFooter}</p></div><span>© 2026 HORROR DOPAMINE</span></footer>
