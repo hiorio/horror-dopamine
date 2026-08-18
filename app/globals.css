@@ -3404,6 +3404,13 @@ body:has(.garden-root) {
   line-height: 1.34;
 }
 
+html[lang="ko"] .garden-promise {
+  max-width: none;
+  font-size: clamp(17px, 2.75vw, 35px);
+  letter-spacing: -0.06em;
+  white-space: nowrap;
+}
+
 .garden-intro {
   display: flex;
   max-width: 630px;

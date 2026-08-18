@@ -46,7 +46,8 @@ test("루트와 하위 노드의 정적 페이지가 생성된다", async () => 
   assert.match(javascript, /매일 플랭크/);
   assert.match(javascript, /비온다매/);
   assert.match(javascript, /HIORIO \/ INDEPENDENT MAKER/);
-  assert.match(javascript, /아이디어를 오래 쓰이는 형태로 피웁니다/);
+  assert.match(javascript, /아이디어를 오래 쓰이는 형태로 만듭니다/);
+  assert.match(javascript, /우선은 제가 필요로 하는 것들을 피워내요/);
   assert.match(javascript, /다음 가지/);
   assert.doesNotMatch(javascript, /👀|GROWING SINCE|2024 · SEOUL/);
   assert.match(javascript, /APPS IN BLOOM\./);
