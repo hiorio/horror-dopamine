@@ -83,51 +83,95 @@ function RootPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
             {copy.rootDescription.map((line) => <span key={line}>{line}</span>)}
           </p>
           <a className="garden-scroll-link" href="#work-index">
-            <span>01</span><i className="garden-eye" aria-hidden="true">👀</i>{copy.rootSectionTitle}<b aria-hidden="true">↓</b>
+            <span>01</span>{copy.rootSectionTitle}<b aria-hidden="true">↓</b>
           </a>
         </div>
 
         <div className="garden-hero-flower" aria-hidden="true">
-          <span className="flower-note">GROWING SINCE<br />2024 · SEOUL</span>
-          <svg viewBox="0 0 480 590" role="presentation">
+          <svg viewBox="0 0 520 620" role="presentation">
             <defs>
-              <linearGradient id="petalWash" x1="0" x2="1" y1="0" y2="1">
-                <stop offset="0" stopColor="#fffdf5" />
-                <stop offset="1" stopColor="#eadfca" />
+              <linearGradient id="petalIvory" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0" stopColor="#fffdf7" />
+                <stop offset="0.56" stopColor="#f3eadb" />
+                <stop offset="1" stopColor="#dfd0bd" />
               </linearGradient>
-              <linearGradient id="leafWash" x1="0" x2="1" y1="0" y2="1">
-                <stop offset="0" stopColor="#7d9270" />
-                <stop offset="1" stopColor="#425d46" />
+              <linearGradient id="petalBlush" x1="0" x2="0.7" y1="0" y2="1">
+                <stop offset="0" stopColor="#f8f0e3" />
+                <stop offset="1" stopColor="#d9c0aa" />
+              </linearGradient>
+              <linearGradient id="leafDeep" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0" stopColor="#82947a" />
+                <stop offset="0.52" stopColor="#59745b" />
+                <stop offset="1" stopColor="#304e3b" />
+              </linearGradient>
+              <linearGradient id="leafLight" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0" stopColor="#a2aa8b" />
+                <stop offset="1" stopColor="#5e7659" />
               </linearGradient>
             </defs>
-            <g className="flower-line">
-              <path d="M264 576C273 490 278 413 269 329C265 290 257 253 242 222" />
-              <path d="M269 405C224 376 181 365 133 371" />
-              <path d="M271 468C314 432 353 416 402 414" />
-              <path d="M254 300C213 282 184 253 166 218" />
+
+            <g className="botanical-stems">
+              <path d="M304 612C303 542 307 473 300 407C292 330 281 251 267 184" />
+              <path d="M298 416C252 388 207 378 153 382" />
+              <path d="M302 478C349 438 392 424 450 428" />
+              <path d="M287 328C330 294 370 282 419 291" />
+              <path d="M279 278C238 255 204 225 183 190" />
+              <path d="M239 249C207 278 170 296 126 296" />
             </g>
-            <g className="flower-leaves" fill="url(#leafWash)">
-              <path d="M218 374C176 338 132 341 104 369C140 392 178 397 218 374Z" />
-              <path d="M309 438C341 397 384 391 419 408C394 441 357 453 309 438Z" />
-              <path d="M237 286C201 251 163 251 137 271C163 300 196 306 237 286Z" />
-              <path d="M272 348C302 313 339 308 370 324C345 353 315 362 272 348Z" />
+
+            <g className="botanical-leaves">
+              <path fill="url(#leafDeep)" d="M257 389C220 350 169 347 128 377C163 409 211 414 257 389Z" />
+              <path fill="url(#leafLight)" d="M344 444C375 402 426 396 467 420C441 456 394 468 344 444Z" />
+              <path fill="url(#leafDeep)" d="M329 309C357 274 402 267 438 286C416 320 372 331 329 309Z" />
+              <path fill="url(#leafLight)" d="M253 263C219 225 174 222 140 248C168 280 210 286 253 263Z" />
+              <path fill="url(#leafDeep)" d="M210 278C182 284 151 307 109 296C132 269 169 255 210 278Z" />
             </g>
-            <g className="flower-bloom" fill="url(#petalWash)">
-              <path d="M242 219C199 177 203 127 238 112C265 141 265 181 242 219Z" />
-              <path d="M247 219C254 160 293 129 329 145C323 185 294 211 247 219Z" />
-              <path d="M244 224C290 197 335 207 350 244C317 266 278 257 244 224Z" />
-              <path d="M238 222C278 251 277 294 244 315C215 287 215 254 238 222Z" />
-              <path d="M237 220C205 260 164 263 140 234C162 199 198 196 237 220Z" />
-              <path d="M239 216C190 206 166 170 184 137C222 144 244 174 239 216Z" />
+
+            <g className="leaf-veins">
+              <path d="M250 385C207 380 168 381 132 378" />
+              <path d="M347 442C389 431 427 424 462 421" />
+              <path d="M332 307C369 298 402 291 434 287" />
+              <path d="M248 260C209 252 175 250 144 249" />
+              <path d="M204 279C169 286 139 292 113 296" />
             </g>
-            <circle className="flower-center" cx="242" cy="221" r="29" />
-            <g className="flower-stamens">
-              {Array.from({ length: 12 }, (_, index) => {
-                const angle = (index / 12) * Math.PI * 2;
-                const x = 242 + Math.cos(angle) * 39;
-                const y = 221 + Math.sin(angle) * 39;
-                return <circle cx={x} cy={y} key={index} r="3.4" />;
+
+            <g className="magnolia-petals">
+              <path fill="url(#petalIvory)" d="M266 183C232 151 222 100 250 55C285 77 296 127 266 183Z" />
+              <path fill="url(#petalBlush)" d="M274 181C276 128 307 86 350 83C359 126 327 165 274 181Z" />
+              <path fill="url(#petalIvory)" d="M278 188C320 149 371 150 400 181C376 218 328 219 278 188Z" />
+              <path fill="url(#petalBlush)" d="M276 194C329 190 365 218 360 255C318 263 286 240 276 194Z" />
+              <path fill="url(#petalIvory)" d="M267 197C302 237 296 280 263 297C232 269 236 228 267 197Z" />
+              <path fill="url(#petalBlush)" d="M259 194C244 244 204 266 168 248C173 210 207 187 259 194Z" />
+              <path fill="url(#petalIvory)" d="M258 186C208 207 166 188 158 150C192 128 232 143 258 186Z" />
+              <path fill="url(#petalBlush)" d="M262 181C220 155 211 112 238 83C270 100 280 139 262 181Z" />
+            </g>
+
+            <g className="petal-veins">
+              <path d="M268 184C260 137 257 99 251 62" />
+              <path d="M275 184C302 145 326 112 347 88" />
+              <path d="M279 189C322 181 362 181 394 181" />
+              <path d="M275 195C309 215 337 235 355 252" />
+              <path d="M267 198C266 234 264 265 263 291" />
+              <path d="M258 195C226 215 197 231 173 246" />
+              <path d="M257 188C222 175 189 162 162 152" />
+            </g>
+
+            <ellipse className="magnolia-center" cx="268" cy="190" rx="24" ry="20" />
+            <g className="magnolia-stamens">
+              {Array.from({ length: 18 }, (_, index) => {
+                const angle = (index / 18) * Math.PI * 2;
+                const innerX = 268 + Math.cos(angle) * 22;
+                const innerY = 190 + Math.sin(angle) * 18;
+                const outerX = 268 + Math.cos(angle) * 36;
+                const outerY = 190 + Math.sin(angle) * 31;
+                return <g key={index}><path d={`M${innerX} ${innerY}L${outerX} ${outerY}`} /><circle cx={outerX} cy={outerY} r="2.8" /></g>;
               })}
+            </g>
+
+            <g className="magnolia-bud">
+              <path d="M183 192C164 178 157 154 171 137C192 145 200 167 183 192Z" />
+              <path d="M180 193C197 172 214 172 223 185C213 202 196 205 180 193Z" />
+              <path className="bud-sepal" d="M183 194C171 188 163 188 156 192C163 201 172 204 183 194Z" />
             </g>
           </svg>
           <span className="flower-caption">IDEAS → FORMS → LIFE</span>
@@ -137,7 +181,7 @@ function RootPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
       <section className="garden-index" id="work-index" aria-labelledby="root-work-title">
         <header className="garden-index-heading">
           <span className="garden-section-number">01</span>
-          <div><p>SELECTED WORK / GROWING INDEX <i className="garden-eye garden-eye-heading" aria-hidden="true">👀</i></p><h2 id="root-work-title">{copy.rootSectionTitle}</h2></div>
+          <div><p>SELECTED WORK / GROWING INDEX</p><h2 id="root-work-title">{copy.rootSectionTitle}</h2></div>
           <p>{copy.rootSectionHint}</p>
         </header>
 
@@ -190,7 +234,7 @@ function RootPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
             <div className="branch-content">
               <header><div><p>OPEN BRANCH</p><h3>{copy.rootFutureTitle}</h3></div></header>
               <p className="branch-description">{copy.rootFutureDescription}</p>
-              <div className="future-buds" aria-hidden="true"><i /><i /><i /><span className="future-eye">👀</span></div>
+              <div className="future-buds" aria-hidden="true"><i /><i /><i /></div>
             </div>
           </article>
         </div>
