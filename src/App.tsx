@@ -174,14 +174,14 @@ function RootPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
               <path className="bud-sepal" d="M183 194C171 188 163 188 156 192C163 201 172 204 183 194Z" />
             </g>
           </svg>
-          <span className="flower-caption">IDEAS → FORMS → LIFE</span>
+          <span className="flower-caption">IDEAS → ROOTS → BLOOM</span>
         </div>
       </section>
 
       <section className="garden-index" id="work-index" aria-labelledby="root-work-title">
         <header className="garden-index-heading">
           <span className="garden-section-number">01</span>
-          <div><p>SELECTED WORK / GROWING INDEX</p><h2 id="root-work-title">{copy.rootSectionTitle}</h2></div>
+          <div><p>BLOOMED WORK / LIVING INDEX</p><h2 id="root-work-title">{copy.rootSectionTitle}</h2></div>
           <p>{copy.rootSectionHint}</p>
         </header>
 
@@ -232,7 +232,7 @@ function RootPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
           <article className="garden-branch garden-branch-future">
             <span className="branch-number">03</span>
             <div className="branch-content">
-              <header><div><p>OPEN BRANCH</p><h3>{copy.rootFutureTitle}</h3></div></header>
+              <header><div><p>NEXT BLOOM</p><h3>{copy.rootFutureTitle}</h3></div></header>
               <p className="branch-description">{copy.rootFutureDescription}</p>
               <div className="future-buds" aria-hidden="true"><i /><i /><i /></div>
             </div>
@@ -311,7 +311,7 @@ function AppsPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
           <p className="hero-description">{copy.appsDescription.map((line) => <span key={line}>{line}<br /></span>)}</p>
         </div>
         <aside className="development-garden" aria-label={copy.appsSectionTitle}>
-          <div className="garden-head"><span>LINK FLOWER / PRODUCTS</span><b>{String(productApps.length).padStart(2, "0")}</b></div>
+          <div className="garden-head"><span>HIORIO / SERVICES</span><b>{String(productApps.length).padStart(2, "0")}</b></div>
           <div className="garden-plot">
             <i className="garden-stem" aria-hidden="true" />
             {productApps.map((app) => {
@@ -368,7 +368,7 @@ function AppsPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
       </section>
 
       <footer className="site-footer development-footer">
-        <div><span className="footer-node">NODE_01</span><p>{copy.appsFooter}</p></div><span>© 2026 LINK FLOWER</span>
+        <div><span className="footer-node">APPS / SERVICES</span><p>{copy.appsFooter}</p></div><span>© 2026 HIORIO</span>
       </footer>
     </main>
   );
