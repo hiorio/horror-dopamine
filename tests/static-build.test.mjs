@@ -4,7 +4,7 @@ import { readFile, readdir, stat } from "node:fs/promises";
 import test from "node:test";
 
 const pages = [
-  ["../dist/index.html", "Hiorio — 앱과 콘텐츠를 만드는 사람"],
+  ["../dist/index.html", "Hiorio — 아이디어를 오래 쓰이는 형태로 만드는 사람"],
   ["../dist/channels/index.html", "콘텐츠 채널 | Link Flower"],
   ["../dist/apps/index.html", "만든 앱들 | Link Flower"],
   ["../dist/apps/dohwaji/index.html", "도화지 | 함께 만드는 모임 동선 지도"],
@@ -46,6 +46,8 @@ test("루트와 하위 노드의 정적 페이지가 생성된다", async () => 
   assert.match(javascript, /매일 플랭크/);
   assert.match(javascript, /비온다매/);
   assert.match(javascript, /HIORIO \/ INDEPENDENT MAKER/);
+  assert.match(javascript, /아이디어를 오래 쓰이는 형태로 만듭니다/);
+  assert.match(javascript, /다음 가지/);
   assert.match(javascript, /THINGS I MADE\./);
   assert.match(javascript, /다음 모임은 도화지 한 장으로 정리하세요/);
   assert.match(javascript, /apps\/dohwaji/);

@@ -36,7 +36,7 @@ function SiteHeader({ activeRoute, copy, locale, setLocale }: {
   const routes: Array<{ id: RouteId; label: string }> = [
     { id: "root", label: copy.mainNode },
     { id: "apps", label: copy.appsNode },
-    { id: "horror", label: copy.horrorNode },
+    { id: "channels", label: copy.channelsNode },
   ];
 
   return (
@@ -48,7 +48,9 @@ function SiteHeader({ activeRoute, copy, locale, setLocale }: {
       <div className="network-controls">
         <nav className="node-switcher" aria-label={copy.nodeNetworkLabel}>
           {routes.map((route) => (
-            <a className={activeRoute === route.id || ((activeRoute === "dohwaji" || activeRoute === "timeflower" || activeRoute === "dailyplank") && route.id === "apps") ? "is-active" : ""} href={routeHref(route.id)} key={route.id}>
+            <a className={activeRoute === route.id
+              || ((activeRoute === "dohwaji" || activeRoute === "timeflower" || activeRoute === "dailyplank") && route.id === "apps")
+              || (activeRoute === "horror" && route.id === "channels") ? "is-active" : ""} href={routeHref(route.id)} key={route.id}>
               <span>{route.label}</span>
             </a>
           ))}
@@ -67,67 +69,133 @@ function SiteHeader({ activeRoute, copy, locale, setLocale }: {
 }
 
 function RootPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; setLocale: (locale: Locale) => void }) {
-  const workAreas = [
-    { id: "apps" as const, code: "APPS / SERVICES", count: `${String(productApps.length).padStart(2, "0")} LIVE APPS`, title: copy.appsCardTitle, description: copy.appsCardDescription },
-    { id: "horror" as const, code: "STORIES / SHORTS", count: "01 CONTENT BRAND", title: copy.horrorCardTitle, description: copy.horrorCardDescription },
-  ];
-
   return (
-    <main className="site-shell root-shell">
+    <main className="site-shell root-shell garden-root">
       <div className="root-grid-bg" aria-hidden="true" />
       <SiteHeader activeRoute="root" copy={copy} locale={locale} setLocale={setLocale} />
 
-      <section className="root-hero" aria-labelledby="root-page-title">
-        <div className="root-copy">
-          <div className="root-kicker"><span>{copy.rootKicker}</span><span>PRODUCT / CONTENT / KR</span></div>
-          <h1 id="root-page-title" className="root-title">
-            <span>{copy.rootTitle}</span><span>{copy.rootTitleAccent}</span>
-          </h1>
-          <p className="hero-description">
-            {copy.rootDescription.map((line) => <span key={line}>{line}<br /></span>)}
+      <section className="garden-hero" aria-labelledby="root-page-title">
+        <div className="garden-hero-copy">
+          <div className="garden-eyebrow"><span>{copy.rootKicker}</span><i aria-hidden="true" /></div>
+          <h1 id="root-page-title">{copy.rootTitle}</h1>
+          <p className="garden-promise">{copy.rootTitleAccent}</p>
+          <p className="garden-intro">
+            {copy.rootDescription.map((line) => <span key={line}>{line}</span>)}
           </p>
+          <a className="garden-scroll-link" href="#work-index"><span>01</span>{copy.rootSectionTitle}<b aria-hidden="true">↓</b></a>
         </div>
 
-        <aside className="maker-card" aria-label={copy.rootKicker}>
-          <div className="maker-card-top"><span>HIORIO / MAKER</span><i /></div>
-          <div className="maker-monogram" aria-hidden="true">H</div>
-          <p>{copy.rootFooter}</p>
-          <dl>
-            <div><dt>PRODUCTS</dt><dd>{String(productApps.length).padStart(2, "0")}</dd></div>
-            <div><dt>CONTENT BRAND</dt><dd>01</dd></div>
-            <div><dt>BASED</dt><dd>KR</dd></div>
-          </dl>
-        </aside>
+        <div className="garden-hero-flower" aria-hidden="true">
+          <span className="flower-note">GROWING SINCE<br />2024 · SEOUL</span>
+          <svg viewBox="0 0 480 590" role="presentation">
+            <defs>
+              <linearGradient id="petalWash" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0" stopColor="#fffdf5" />
+                <stop offset="1" stopColor="#eadfca" />
+              </linearGradient>
+              <linearGradient id="leafWash" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0" stopColor="#7d9270" />
+                <stop offset="1" stopColor="#425d46" />
+              </linearGradient>
+            </defs>
+            <g className="flower-line">
+              <path d="M264 576C273 490 278 413 269 329C265 290 257 253 242 222" />
+              <path d="M269 405C224 376 181 365 133 371" />
+              <path d="M271 468C314 432 353 416 402 414" />
+              <path d="M254 300C213 282 184 253 166 218" />
+            </g>
+            <g className="flower-leaves" fill="url(#leafWash)">
+              <path d="M218 374C176 338 132 341 104 369C140 392 178 397 218 374Z" />
+              <path d="M309 438C341 397 384 391 419 408C394 441 357 453 309 438Z" />
+              <path d="M237 286C201 251 163 251 137 271C163 300 196 306 237 286Z" />
+              <path d="M272 348C302 313 339 308 370 324C345 353 315 362 272 348Z" />
+            </g>
+            <g className="flower-bloom" fill="url(#petalWash)">
+              <path d="M242 219C199 177 203 127 238 112C265 141 265 181 242 219Z" />
+              <path d="M247 219C254 160 293 129 329 145C323 185 294 211 247 219Z" />
+              <path d="M244 224C290 197 335 207 350 244C317 266 278 257 244 224Z" />
+              <path d="M238 222C278 251 277 294 244 315C215 287 215 254 238 222Z" />
+              <path d="M237 220C205 260 164 263 140 234C162 199 198 196 237 220Z" />
+              <path d="M239 216C190 206 166 170 184 137C222 144 244 174 239 216Z" />
+            </g>
+            <circle className="flower-center" cx="242" cy="221" r="29" />
+            <g className="flower-stamens">
+              {Array.from({ length: 12 }, (_, index) => {
+                const angle = (index / 12) * Math.PI * 2;
+                const x = 242 + Math.cos(angle) * 39;
+                const y = 221 + Math.sin(angle) * 39;
+                return <circle cx={x} cy={y} key={index} r="3.4" />;
+              })}
+            </g>
+          </svg>
+          <span className="flower-caption">IDEAS → FORMS → LIFE</span>
+        </div>
       </section>
 
-      <section className="root-work" aria-labelledby="root-work-title">
-        <div className="section-heading root-heading">
-          <div><span className="section-index">WORK</span><h2 id="root-work-title">{copy.rootSectionTitle}</h2></div>
-          <p>{copy.rootSectionHint.toUpperCase()}</p>
+      <section className="garden-index" id="work-index" aria-labelledby="root-work-title">
+        <header className="garden-index-heading">
+          <span className="garden-section-number">01</span>
+          <div><p>SELECTED WORK / GROWING INDEX</p><h2 id="root-work-title">{copy.rootSectionTitle}</h2></div>
+          <p>{copy.rootSectionHint}</p>
+        </header>
+
+        <div className="garden-work-tree">
+          <div className="garden-trunk" aria-hidden="true"><i /><i /><i /><i /></div>
+
+          <article className="garden-branch garden-branch-apps">
+            <span className="branch-number">01</span>
+            <div className="branch-content">
+              <header>
+                <div><p>APPS / SERVICES</p><h3>{copy.appsCardTitle}</h3></div>
+                <a href={routeHref("apps")} aria-label={`${copy.appsCardTitle} ${copy.enterNode}`}>{copy.enterNode}<span aria-hidden="true">↗</span></a>
+              </header>
+              <p className="branch-description">{copy.appsCardDescription}</p>
+              <ul className="garden-app-list">
+                {productApps.map((app) => {
+                  const content = app.content[locale];
+                  return (
+                    <li key={app.id}>
+                      <a href={`${routeHref("apps")}#${app.id}`}>
+                        <span className="garden-app-icon"><img src={`${basePath}${app.icon}`} alt="" /></span>
+                        <strong>{content.displayName}</strong>
+                        <small>{content.tagline}</small>
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </article>
+
+          <article className="garden-branch garden-branch-content">
+            <span className="branch-number">02</span>
+            <div className="branch-content">
+              <header>
+                <div><p>CONTENT / CHANNELS</p><h3>{copy.channelsCardTitle}</h3></div>
+                <a href={routeHref("channels")} aria-label={`${copy.channelsCardTitle} ${copy.enterNode}`}>{copy.enterNode}<span aria-hidden="true">↗</span></a>
+              </header>
+              <p className="branch-description">{copy.channelsCardDescription}</p>
+              <a className="garden-content-entry" href={routeHref("horror")}>
+                <span className="content-entry-mark" aria-hidden="true"><i />REC</span>
+                <span><strong>{copy.horrorCardTitle}</strong><small>{copy.horrorCardDescription}</small></span>
+                <b aria-hidden="true">→</b>
+              </a>
+            </div>
+          </article>
+
+          <article className="garden-branch garden-branch-future">
+            <span className="branch-number">03</span>
+            <div className="branch-content">
+              <header><div><p>OPEN BRANCH</p><h3>{copy.rootFutureTitle}</h3></div></header>
+              <p className="branch-description">{copy.rootFutureDescription}</p>
+              <div className="future-buds" aria-hidden="true"><i /><i /><i /></div>
+            </div>
+          </article>
         </div>
-        <nav className="root-work-grid" aria-label={copy.rootSectionTitle}>
-          {workAreas.map((work) => (
-            <a className={`root-work-card work-card-${work.id}`} href={routeHref(work.id)} key={work.id}>
-              <div className="work-card-visual" aria-hidden="true">
-                <span>{work.code}</span>
-                {work.id === "apps" ? (
-                  <div className="work-app-icons">{productApps.map((app) => <img src={`${basePath}${app.icon}`} alt="" key={app.id} />)}</div>
-                ) : (
-                  <div className="work-horror-mark"><i>REC</i><b>공포<br />도파민</b><span>STORIES / SHORTS</span></div>
-                )}
-              </div>
-              <div className="work-card-copy">
-                <div className="work-card-meta"><span>{work.count}</span><span>BY HIORIO</span></div>
-                <strong>{work.title}</strong><p>{work.description}</p>
-                <span className="root-work-cta">{copy.enterNode} <b aria-hidden="true">→</b></span>
-              </div>
-            </a>
-          ))}
-        </nav>
       </section>
 
       <footer className="site-footer root-footer">
-        <div><span className="footer-node">LINK FLOWER</span><p>{copy.rootFooter}</p></div><span>© 2026 HIORIO</span>
+        <div><span className="footer-node">HIORIO</span><p>{copy.rootFooter}</p></div><span>LINK FLOWER · © 2026</span>
       </footer>
     </main>
   );
@@ -219,7 +287,7 @@ function AppsPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
             const content = app.content[locale];
             const internalHref = detailHref(app.id);
             return (
-              <article className={`catalog-entry catalog-${app.accent}`} key={app.id}>
+              <article className={`catalog-entry catalog-${app.accent}`} id={app.id} key={app.id}>
                 <div className="catalog-sequence">
                   <span>APP_{app.order}</span>
                   <i />
