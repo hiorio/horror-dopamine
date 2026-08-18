@@ -5,7 +5,7 @@ import { defineConfig } from "vite";
 const root = fileURLToPath(new URL(".", import.meta.url));
 
 export default defineConfig({
-  base: "/link-flower/",
+  base: "/",
   plugins: [react()],
   build: {
     rollupOptions: {

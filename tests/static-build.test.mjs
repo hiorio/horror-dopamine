@@ -26,7 +26,8 @@ test("루트와 하위 노드의 정적 페이지가 생성된다", async () => 
     const html = await readFile(new URL(path, import.meta.url), "utf8");
     assert.match(html, /<html lang="ko">/);
     assert.match(html, new RegExp(`<title>${title.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}<\\/title>`));
-    assert.match(html, /\/link-flower\/assets\//);
+    assert.match(html, /\/assets\//);
+    assert.doesNotMatch(html, /\/link-flower\//);
     assert.doesNotMatch(html, /chatgpt-team|kaviodori|cloudflare|#\/apps|#\/horror/i);
   }
 
@@ -63,7 +64,8 @@ test("루트와 하위 노드의 정적 페이지가 생성된다", async () => 
   assert.match(javascript, /app-icons\/biondamae\.png/);
 
   const rootHtml = await readFile(new URL("../dist/index.html", import.meta.url), "utf8");
-  assert.match(rootHtml, /https:\/\/hiorio\.github\.io\/link-flower\/og\.png/);
+  assert.match(rootHtml, /https:\/\/hiorio\.com\/og\.png/);
+  assert.match(rootHtml, /rel="canonical" href="https:\/\/hiorio\.com\/"/);
   assert.match(rootHtml, /twitter:card/);
   assert.doesNotMatch(rootHtml, /Node Network|노드 선택/);
 
