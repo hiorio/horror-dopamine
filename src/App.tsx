@@ -82,7 +82,9 @@ function RootPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
           <p className="garden-intro">
             {copy.rootDescription.map((line) => <span key={line}>{line}</span>)}
           </p>
-          <a className="garden-scroll-link" href="#work-index"><span>01</span>{copy.rootSectionTitle}<b aria-hidden="true">↓</b></a>
+          <a className="garden-scroll-link" href="#work-index">
+            <span>01</span><i className="garden-eye" aria-hidden="true">👀</i>{copy.rootSectionTitle}<b aria-hidden="true">↓</b>
+          </a>
         </div>
 
         <div className="garden-hero-flower" aria-hidden="true">
@@ -135,7 +137,7 @@ function RootPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
       <section className="garden-index" id="work-index" aria-labelledby="root-work-title">
         <header className="garden-index-heading">
           <span className="garden-section-number">01</span>
-          <div><p>SELECTED WORK / GROWING INDEX</p><h2 id="root-work-title">{copy.rootSectionTitle}</h2></div>
+          <div><p>SELECTED WORK / GROWING INDEX <i className="garden-eye garden-eye-heading" aria-hidden="true">👀</i></p><h2 id="root-work-title">{copy.rootSectionTitle}</h2></div>
           <p>{copy.rootSectionHint}</p>
         </header>
 
@@ -188,7 +190,7 @@ function RootPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
             <div className="branch-content">
               <header><div><p>OPEN BRANCH</p><h3>{copy.rootFutureTitle}</h3></div></header>
               <p className="branch-description">{copy.rootFutureDescription}</p>
-              <div className="future-buds" aria-hidden="true"><i /><i /><i /></div>
+              <div className="future-buds" aria-hidden="true"><i /><i /><i /><span className="future-eye">👀</span></div>
             </div>
           </article>
         </div>
