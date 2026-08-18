@@ -447,6 +447,8 @@ function DohwajiPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; 
 function HorrorPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; setLocale: (locale: Locale) => void }) {
   const node = nodes[defaultNodeId];
   const content = node.content[locale];
+  const primaryChannel = node.channels.find((channel) => channel.mark === "IG")!;
+  const secondaryChannels = node.channels.filter((channel) => channel.mark !== "IG");
 
   return (
     <main className="site-shell">
@@ -468,8 +470,8 @@ function HorrorPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; s
 
       <section className="featured" aria-labelledby="featured-title">
         <div className="section-heading"><div><span className="section-index">02</span><h2 id="featured-title">{copy.featuredTitle}</h2></div><p>{copy.featuredHint.toUpperCase()}</p></div>
-        <a className="featured-card" href={node.archiveUrl} target="_blank" rel="noreferrer" aria-label={copy.featuredLinkLabel}>
-          <div className="record-visual" aria-hidden="true"><span className="visual-label">MOST VIEWED</span><div className="play-symbol">▶</div><span className="visual-time">ARCHIVE_001</span></div>
+        <a className="featured-card" href={primaryChannel.href} target="_blank" rel="noreferrer" aria-label={copy.featuredLinkLabel}>
+          <div className="record-visual" aria-hidden="true"><span className="visual-label">PRIMARY SIGNAL</span><div className="play-symbol">IG</div><span className="visual-time">@HORROR_DOPAMINE</span></div>
           <div className="featured-copy"><span className="featured-kicker">{copy.featuredKicker.toUpperCase()}</span><h3>{copy.featuredHeading[0]}<br />{copy.featuredHeading[1]}</h3><p>{copy.featuredDescription}</p><span className="featured-cta">{copy.featuredCta} <b aria-hidden="true">↗</b></span></div>
         </a>
 
@@ -478,7 +480,7 @@ function HorrorPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; s
           <p>{copy.horrorSocialHint.toUpperCase()}</p>
         </div>
         <nav className="horror-social-grid" aria-label={copy.horrorSocialTitle}>
-          {node.channels.slice(1).map((channel) => (
+          {secondaryChannels.map((channel) => (
             <a className={`horror-social-card horror-social-${channel.mark.toLowerCase()}`} href={channel.href} key={channel.name}
               target="_blank" rel="noreferrer" aria-label={copy.channelLinkLabel(channel.name)}>
               <div className="horror-social-top"><span>SIGNAL_{channel.index}</span><span>LIVE ↗</span></div>

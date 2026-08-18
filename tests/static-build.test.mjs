@@ -55,6 +55,8 @@ test("루트와 하위 노드의 정적 페이지가 생성된다", async () => 
   assert.match(javascript, /apps\/timeflower/);
   assert.match(javascript, /apps\/daily-plank/);
   assert.match(javascript, /다른 신호 수신하기/);
+  assert.match(javascript, /가장 먼저 도착하는 공포 이미지/);
+  assert.match(javascript, /PRIMARY SIGNAL/);
   assert.match(javascript, /https:\/\/www\.instagram\.com\/horror_dopamine/);
   assert.match(javascript, /https:\/\/www\.tiktok\.com\/@horror_dopamine/);
 
