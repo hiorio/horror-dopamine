@@ -28,6 +28,7 @@ npm run dev
 
 앱 목록의 제품은 `src/apps.ts`의 `productApps` 배열에서 관리합니다.
 공포도파민 브랜드와 채널 데이터는 `src/nodes.ts`에서 관리합니다.
+공포도파민 공개 여부는 `src/visibility.ts`의 `SHOW_HORROR_DOPAMINE` 값으로 관리합니다.
 
 ## 배포
 

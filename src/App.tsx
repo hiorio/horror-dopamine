@@ -4,6 +4,7 @@ import { detectLocale, localeLabels, supportedLocales, ui, type Locale } from ".
 import { defaultNodeId, nodes } from "./nodes";
 import { DailyPlankPage, dailyPlankCopy } from "./DailyPlankPage";
 import { TimeFlowerPage, timeFlowerCopy } from "./TimeFlowerPage";
+import { SHOW_HORROR_DOPAMINE } from "./visibility";
 
 type RouteId = "root" | "channels" | "apps" | "dohwaji" | "timeflower" | "dailyplank" | "horror";
 type Copy = (typeof ui)[Locale];
@@ -23,7 +24,8 @@ function getRoute(): RouteId {
   if (relativePath === "apps/dohwaji") return "dohwaji";
   if (relativePath === "apps/timeflower") return "timeflower";
   if (relativePath === "apps/daily-plank") return "dailyplank";
-  if (relativePath === "channels" || relativePath === "apps" || relativePath === "horror") return relativePath;
+  if (relativePath === "channels" || relativePath === "horror") return SHOW_HORROR_DOPAMINE ? relativePath : "root";
+  if (relativePath === "apps") return relativePath;
   return "root";
 }
 
@@ -36,7 +38,7 @@ function SiteHeader({ activeRoute, copy, locale, setLocale }: {
   const routes: Array<{ id: RouteId; label: string }> = [
     { id: "root", label: copy.mainNode },
     { id: "apps", label: copy.appsNode },
-    { id: "channels", label: copy.channelsNode },
+    ...(SHOW_HORROR_DOPAMINE ? [{ id: "channels" as const, label: copy.channelsNode }] : []),
   ];
 
   return (
@@ -203,24 +205,26 @@ function RootPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
             </div>
           </article>
 
-          <article className="garden-branch garden-branch-content">
-            <span className="branch-number">02</span>
-            <div className="branch-content">
-              <header>
-                <div><p>CONTENT / CHANNELS</p><h3>{copy.channelsCardTitle}</h3></div>
-                <a href={routeHref("channels")} aria-label={`${copy.channelsCardTitle} ${copy.enterNode}`}>{copy.enterNode}<span aria-hidden="true">↗</span></a>
-              </header>
-              <p className="branch-description">{copy.channelsCardDescription}</p>
-              <a className="garden-content-entry" href={routeHref("horror")}>
-                <span className="content-entry-mark" aria-hidden="true"><i />REC</span>
-                <span><strong>{copy.horrorCardTitle}</strong><small>{copy.horrorCardDescription}</small></span>
-                <b aria-hidden="true">→</b>
-              </a>
-            </div>
-          </article>
+          {SHOW_HORROR_DOPAMINE && (
+            <article className="garden-branch garden-branch-content">
+              <span className="branch-number">02</span>
+              <div className="branch-content">
+                <header>
+                  <div><p>CONTENT / CHANNELS</p><h3>{copy.channelsCardTitle}</h3></div>
+                  <a href={routeHref("channels")} aria-label={`${copy.channelsCardTitle} ${copy.enterNode}`}>{copy.enterNode}<span aria-hidden="true">↗</span></a>
+                </header>
+                <p className="branch-description">{copy.channelsCardDescription}</p>
+                <a className="garden-content-entry" href={routeHref("horror")}>
+                  <span className="content-entry-mark" aria-hidden="true"><i />REC</span>
+                  <span><strong>{copy.horrorCardTitle}</strong><small>{copy.horrorCardDescription}</small></span>
+                  <b aria-hidden="true">→</b>
+                </a>
+              </div>
+            </article>
+          )}
 
           <article className="garden-branch garden-branch-future">
-            <span className="branch-number">03</span>
+            <span className="branch-number">{SHOW_HORROR_DOPAMINE ? "03" : "02"}</span>
             <div className="branch-content">
               <header><div><p>NEXT BLOOM</p><h3>{copy.rootFutureTitle}</h3></div></header>
               <p className="branch-description">{copy.rootFutureDescription}</p>
@@ -517,11 +521,11 @@ export default function App() {
     try { window.localStorage.setItem("link-flower-locale", locale); } catch { /* selection still works */ }
   }, [copy, locale, route]);
 
-  if (route === "channels") return <ChannelsPage copy={copy} locale={locale} setLocale={setLocale} />;
+  if (SHOW_HORROR_DOPAMINE && route === "channels") return <ChannelsPage copy={copy} locale={locale} setLocale={setLocale} />;
   if (route === "apps") return <AppsPage copy={copy} locale={locale} setLocale={setLocale} />;
   if (route === "dohwaji") return <DohwajiPage copy={copy} locale={locale} setLocale={setLocale} />;
   if (route === "timeflower") return <TimeFlowerPage header={<SiteHeader activeRoute="timeflower" copy={copy} locale={locale} setLocale={setLocale} />} locale={locale} appsHref={routeHref("apps")} />;
   if (route === "dailyplank") return <DailyPlankPage header={<SiteHeader activeRoute="dailyplank" copy={copy} locale={locale} setLocale={setLocale} />} locale={locale} appsHref={routeHref("apps")} />;
-  if (route === "horror") return <HorrorPage copy={copy} locale={locale} setLocale={setLocale} />;
+  if (SHOW_HORROR_DOPAMINE && route === "horror") return <HorrorPage copy={copy} locale={locale} setLocale={setLocale} />;
   return <RootPage copy={copy} locale={locale} setLocale={setLocale} />;
 }

@@ -5,12 +5,10 @@ import test from "node:test";
 
 const pages = [
   ["../dist/index.html", "Hiorio — 아이디어를 오래 쓰이는 형태로 피우는 사람"],
-  ["../dist/channels/index.html", "콘텐츠 채널 | Link Flower"],
   ["../dist/apps/index.html", "틔운 앱들 | Link Flower"],
   ["../dist/apps/dohwaji/index.html", "도화지 | 함께 만드는 모임 동선 지도"],
   ["../dist/apps/timeflower/index.html", "TimeFlower | 함께 쓰는 공유 캘린더"],
   ["../dist/apps/daily-plank/index.html", "매일 플랭크 | 5분부터 시작하는 플랭크 가이드"],
-  ["../dist/horror/index.html", "공포도파민 | Horror Dopamine"],
 ];
 
 const operatingIcons = [
@@ -30,6 +28,13 @@ test("루트와 하위 노드의 정적 페이지가 생성된다", async () => 
     assert.doesNotMatch(html, /\/link-flower\//);
     assert.doesNotMatch(html, /chatgpt-team|kaviodori|cloudflare|#\/apps|#\/horror/i);
   }
+
+  for (const hiddenPath of ["../dist/channels/index.html", "../dist/horror/index.html"]) {
+    await assert.rejects(stat(new URL(hiddenPath, import.meta.url)), { code: "ENOENT" });
+  }
+
+  const visibilitySource = await readFile(new URL("../src/visibility.ts", import.meta.url), "utf8");
+  assert.match(visibilitySource, /SHOW_HORROR_DOPAMINE = false/);
 
   const assetsDirectory = new URL("../dist/assets/", import.meta.url);
   const javascriptFile = (await readdir(assetsDirectory)).find((file) => file.endsWith(".js"));
@@ -61,11 +66,7 @@ test("루트와 하위 노드의 정적 페이지가 생성된다", async () => 
   assert.match(javascript, /apps\/dohwaji/);
   assert.match(javascript, /apps\/timeflower/);
   assert.match(javascript, /apps\/daily-plank/);
-  assert.match(javascript, /다른 신호 수신하기/);
-  assert.match(javascript, /가장 먼저 도착하는 공포 이미지/);
-  assert.match(javascript, /PRIMARY SIGNAL/);
-  assert.match(javascript, /https:\/\/www\.instagram\.com\/horror_dopamine/);
-  assert.match(javascript, /https:\/\/www\.tiktok\.com\/@horror_dopamine/);
+  assert.doesNotMatch(javascript, /PRIMARY SIGNAL|horror_dopamine|horrordopamine/);
 
   for (const path of operatingIcons) {
     const icon = await stat(new URL(path, import.meta.url));
