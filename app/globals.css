@@ -1168,17 +1168,107 @@ h3 {
 }
 
 @media (max-width: 760px) {
-  .dohwaji-hero { padding: 70px 0 78px; }
+  .dohwaji-hero {
+    gap: 42px;
+    padding: 58px 0 68px;
+  }
+
+  .dohwaji-kicker {
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+  }
+
+  .dohwaji-copy h1 { font-size: clamp(66px, 21vw, 88px); }
+  .dohwaji-copy > strong {
+    margin-top: 26px;
+    font-size: clamp(24px, 7vw, 30px);
+  }
+
+  .dohwaji-copy > p:last-of-type {
+    margin-top: 16px;
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+  .dohwaji-actions {
+    margin-top: 26px;
+    flex-direction: column;
+  }
+
+  .dohwaji-actions a {
+    width: 100%;
+    min-height: 52px;
+  }
+
+  .dohwaji-web-shot {
+    width: 100%;
+    padding: 8px;
+    box-shadow: 8px 10px 0 rgba(76, 76, 62, .08);
+  }
+
+  .dohwaji-shot-head { min-height: 34px; }
+  .dohwaji-web-shot figcaption { padding: 10px 4px 2px; }
+  .dohwaji-shot-tape {
+    left: 50%;
+    padding-inline: 18px;
+    white-space: nowrap;
+    transform: translateX(-50%) rotate(-2deg);
+  }
+
+  .dohwaji-problem {
+    padding: 72px 0;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+    align-items: start;
+  }
+
+  .dohwaji-problem > p {
+    width: 100%;
+    margin-top: 12px;
+    padding: 20px;
+    grid-column: auto;
+  }
+
+  .dohwaji-problem h2,
+  .dohwaji-section-heading h2,
+  .dohwaji-final h2 { font-size: clamp(38px, 12vw, 52px); }
+
+  .dohwaji-section-no { margin-bottom: 4px; }
+  .dohwaji-features,
+  .dohwaji-flow { padding: 72px 0; }
+
+  .dohwaji-section-heading {
+    margin-bottom: 42px;
+    gap: 16px;
+  }
+
   .dohwaji-feature-grid article:nth-child(2),
   .dohwaji-feature-grid article:nth-child(3) { transform: none; }
-  .dohwaji-shot-tape { left: 30%; }
+
+  .dohwaji-feature-grid { gap: 14px; }
+  .dohwaji-feature-grid article {
+    min-height: auto;
+    padding: 20px;
+  }
+
+  .feature-symbol {
+    height: 130px;
+    margin: 24px 0 22px;
+  }
+
+  .dohwaji-flow ol { gap: 0; }
+  .dohwaji-flow li {
+    min-height: auto;
+    padding: 22px 0 26px;
+  }
+
+  .dohwaji-flow li p { margin-top: 20px; }
+  .dohwaji-final { padding: 80px 0; }
 }
 
 @media (max-width: 480px) {
-  .dohwaji-copy h1 { font-size: clamp(70px, 22vw, 94px); }
-  .dohwaji-web-shot { padding: 8px; box-shadow: 9px 11px 0 rgba(76, 76, 62, .08); }
-  .dohwaji-shot-head { min-height: 32px; }
-  .dohwaji-shot-tape { left: 23%; padding-inline: 17px; }
+  .dohwaji-copy h1 { font-size: clamp(64px, 20.5vw, 82px); }
   .dohwaji-problem > p { padding: 18px; }
 }
 
