@@ -155,8 +155,55 @@
 .dailyplank-chick.is-proud .leg-left { left: 30px; }
 .dailyplank-chick.is-proud .leg-right { left: 48px; }
 
-.dailyplank-section-intro { display: grid; margin-bottom: 65px; grid-template-columns: .48fr 1.52fr; gap: 44px; align-items: start; }
+.dailyplank-origin {
+  display: grid;
+  padding: 112px 0 116px;
+  border-bottom: 1px solid var(--dp-line);
+  grid-template-columns: minmax(240px, .48fr) minmax(0, 1.52fr);
+  gap: 44px;
+  align-items: center;
+}
+
+.dailyplank-origin-mark {
+  position: relative;
+  display: flex;
+  width: min(100%, 280px);
+  min-height: 310px;
+  padding: 25px;
+  overflow: hidden;
+  border: 1px solid #cbd2e3;
+  background: var(--dp-paper);
+  box-shadow: -12px 14px 0 rgba(56, 89, 217, .065);
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dailyplank-origin-mark::after {
+  position: absolute;
+  right: -47px;
+  bottom: -58px;
+  width: 150px;
+  height: 150px;
+  border: 22px solid var(--dp-blue-soft);
+  border-radius: 50%;
+  content: "";
+}
+
+.dailyplank-origin-mark span,
+.dailyplank-origin-mark small { color: var(--dp-blue); font: 800 9px monospace; letter-spacing: .15em; }
+.dailyplank-origin-mark strong { color: var(--dp-blue); font: 900 118px/.82 monospace; letter-spacing: -.13em; }
+.dailyplank-origin-mark i { width: 48px; height: 3px; background: var(--dp-coral); }
+.dailyplank-origin-mark small { position: relative; z-index: 1; color: var(--dp-faint); }
+
+.dailyplank-origin-copy > span,
 .dailyplank-section-intro > span,.dailyplank-coach-copy > span,.dailyplank-record-copy > span { color: var(--dp-blue); font: 800 9px monospace; letter-spacing: .13em; }
+.dailyplank-origin-copy > p { margin: 34px 0 14px; color: var(--dp-blue-dark); font-size: 12px; font-weight: 800; }
+.dailyplank-origin-copy h2 { max-width: 820px; margin: 0; color: var(--dp-ink); font-size: clamp(40px, 5vw, 66px); letter-spacing: -.075em; line-height: 1.08; overflow-wrap: break-word; word-break: keep-all; }
+.dailyplank-origin-copy > div { display: grid; max-width: 720px; margin-top: 34px; grid-template-columns: 36px 1fr; gap: 17px; }
+.dailyplank-origin-copy > div i { width: 32px; height: 3px; margin-top: 10px; background: var(--dp-blue); }
+.dailyplank-origin-copy > div p { margin: 0; color: var(--dp-muted); font-size: 14px; line-height: 1.9; }
+
+.dailyplank-section-intro { display: grid; margin-bottom: 65px; grid-template-columns: .48fr 1.52fr; gap: 44px; align-items: start; }
 .dailyplank-section-intro p,.dailyplank-coach-copy > p,.dailyplank-record-copy > p { margin: 0 0 14px; color: var(--dp-blue-dark); font-size: 12px; font-weight: 800; }
 .dailyplank-section-intro h2,.dailyplank-coach h2,.dailyplank-record h2,.dailyplank-final h2 { margin: 0; color: var(--dp-ink); font-size: clamp(40px, 5vw, 66px); letter-spacing: -0.075em; line-height: 1.08; }
 
@@ -238,6 +285,9 @@ html[lang="ja"] .dailyplank-hero-copy h1 { font-size: clamp(68px,7.2vw,99px); }
   .dailyplank-coach,.dailyplank-record { grid-template-columns: 1fr; }
   .dailyplank-cue-board,.dailyplank-history-board { width: min(100%, 650px); }
   .dailyplank-record-copy { order: -1; }
+  .dailyplank-origin { grid-template-columns: 210px minmax(0, 1fr); }
+  .dailyplank-origin-mark { min-height: 270px; }
+  .dailyplank-origin-mark strong { font-size: 92px; }
 }
 
 @media (max-width: 760px) {
@@ -246,6 +296,10 @@ html[lang="ja"] .dailyplank-hero-copy h1 { font-size: clamp(68px,7.2vw,99px); }
   .dailyplank-hero-copy h1 { font-size: clamp(72px,18vw,102px); }
   html[lang="en"] .dailyplank-hero-copy h1,html[lang="ja"] .dailyplank-hero-copy h1 { font-size: clamp(66px,17vw,94px); }
   .dailyplank-section-intro { grid-template-columns: 1fr; gap: 26px; }
+  .dailyplank-origin { padding: 82px 0; grid-template-columns: 1fr; }
+  .dailyplank-origin-mark { width: 190px; min-height: 210px; padding: 19px; }
+  .dailyplank-origin-mark strong { font-size: 72px; }
+  .dailyplank-origin-copy > p { margin-top: 0; }
   .dailyplank-routines,.dailyplank-coach,.dailyplank-record { padding: 82px 0; }
   .dailyplank-routine-rail article { grid-template-columns: 110px 1fr; }
   .dailyplank-routine-rail article > i { display: none; }
@@ -275,6 +329,9 @@ html[lang="ja"] .dailyplank-hero-copy h1 { font-size: clamp(68px,7.2vw,99px); }
   .dailyplank-routine-rail h3 { font-size: 19px; }
   .dailyplank-coach,.dailyplank-record { gap: 48px; }
   .dailyplank-coach-description,.dailyplank-record-copy > div { grid-template-columns: 27px 1fr; gap: 12px; }
+  .dailyplank-origin-copy > div { grid-template-columns: 27px 1fr; gap: 12px; }
+  .dailyplank-origin-copy > div i { width: 23px; }
+  .dailyplank-origin-copy > div p { font-size: 13px; }
   .dailyplank-coach-description > i,.dailyplank-record-copy > div > i { width: 23px; }
   .dailyplank-cue-head { padding-inline: 13px; }
   .dailyplank-cue-timeline { padding-inline: 13px; }

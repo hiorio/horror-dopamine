@@ -18,6 +18,9 @@ type DailyPlankCopy = {
   currentStep: string;
   nextStep: string;
   pause: string;
+  originKicker: string;
+  originTitle: string;
+  originDescription: string;
   routineKicker: string;
   routineTitle: string;
   routines: Array<{ minutes: string; level: string; title: string; description: string }>;
@@ -58,6 +61,9 @@ export const dailyPlankCopy: Record<Locale, DailyPlankCopy> = {
     currentStep: "니 플랭크",
     nextStep: "다음 · 기본 포어암 플랭크",
     pause: "일시정지",
+    originKicker: "누군가의 필요에서 시작한 첫 번째 앱",
+    originTitle: "이 앱을 만든 뒤부터 필요를 서비스로 만들기 시작했습니다.",
+    originDescription: "주위에 플랭크 운동을 위한 간단한 가이드가 필요하다는 사람이 있어 만들어 보았습니다. 그렇게 완성한 매일 플랭크는 제 첫 앱이 되었습니다. 이 경험을 계기로 일상에서 느낀 필요를 하나씩 서비스로 만들기 시작했기에, 제게는 모든 시작을 담은 뜻깊은 앱입니다.",
     routineKicker: "오늘의 강도를 고르는 가장 짧은 방법",
     routineTitle: "시간 하나만 고르면 바로 시작합니다.",
     routines: [
@@ -104,6 +110,9 @@ export const dailyPlankCopy: Record<Locale, DailyPlankCopy> = {
     currentStep: "Knee plank",
     nextStep: "Next · Forearm plank",
     pause: "Pause",
+    originKicker: "My first app, started for someone who needed it",
+    originTitle: "After making this app, I began turning everyday needs into services.",
+    originDescription: "Someone close to me needed a simple guide for keeping up with plank workouts, so I tried making one. Daily Plank became the first app I ever built. From there, I began turning the needs I noticed in my own life into services, one by one. That makes this app a meaningful reminder of where everything began.",
     routineKicker: "The shortest way to choose today's intensity",
     routineTitle: "Choose one duration and start.",
     routines: [
@@ -150,6 +159,9 @@ export const dailyPlankCopy: Record<Locale, DailyPlankCopy> = {
     currentStep: "膝つきプランク",
     nextStep: "次 · フォアアームプランク",
     pause: "一時停止",
+    originKicker: "身近な人の必要から始まった、最初のアプリ",
+    originTitle: "このアプリをつくってから、必要をサービスにするようになりました。",
+    originDescription: "身近に、プランク運動を続けるためのシンプルなガイドを必要としている人がいて、つくってみました。毎日プランクは、私が初めてつくったアプリです。この経験をきっかけに、自分の暮らしの中で感じた必要を一つずつサービスにするようになりました。だからこそ、すべての始まりを思い出させてくれる大切なアプリです。",
     routineKicker: "今日の強度を選ぶ、いちばん短い方法",
     routineTitle: "時間を一つ選べば、すぐ始められます。",
     routines: [
@@ -252,9 +264,21 @@ export function DailyPlankPage({ header, locale, appsHref }: { header: ReactNode
         <WorkoutConsole copy={copy} />
       </section>
 
+      <section className="dailyplank-origin" aria-labelledby="dailyplank-origin-title">
+        <div className="dailyplank-origin-mark" aria-hidden="true">
+          <span>FIRST</span><strong>01</strong><i /><small>APP / BEGINNING</small>
+        </div>
+        <div className="dailyplank-origin-copy">
+          <span>01 / WHY I MADE IT</span>
+          <p>{copy.originKicker}</p>
+          <h2 id="dailyplank-origin-title">{copy.originTitle}</h2>
+          <div><i aria-hidden="true" /><p>{copy.originDescription}</p></div>
+        </div>
+      </section>
+
       <section className="dailyplank-routines" aria-labelledby="dailyplank-routines-title">
         <div className="dailyplank-section-intro">
-          <span>01 / PICK A ROUTINE</span>
+          <span>02 / PICK A ROUTINE</span>
           <div><p>{copy.routineKicker}</p><h2 id="dailyplank-routines-title">{copy.routineTitle}</h2></div>
         </div>
         <div className="dailyplank-routine-rail">
@@ -270,7 +294,7 @@ export function DailyPlankPage({ header, locale, appsHref }: { header: ReactNode
 
       <section className="dailyplank-coach" aria-labelledby="dailyplank-coach-title">
         <div className="dailyplank-coach-copy">
-          <span>02 / EYES-FREE COACH</span>
+          <span>03 / EYES-FREE COACH</span>
           <p>{copy.coachKicker}</p>
           <h2 id="dailyplank-coach-title">{copy.coachTitle}</h2>
           <div className="dailyplank-coach-description"><i aria-hidden="true" /><p>{copy.coachDescription}</p></div>
@@ -301,7 +325,7 @@ export function DailyPlankPage({ header, locale, appsHref }: { header: ReactNode
           <div className="dailyplank-mascot-message"><AppChick pose="proud" /><p>{copy.mascotMessage}</p></div>
         </div>
         <div className="dailyplank-record-copy">
-          <span>03 / KEEP THE STREAK</span>
+          <span>04 / KEEP THE STREAK</span>
           <p>{copy.recordKicker}</p>
           <h2 id="dailyplank-record-title">{copy.recordTitle}</h2>
           <div><i aria-hidden="true" /><p>{copy.recordDescription}</p></div>
