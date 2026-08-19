@@ -64,10 +64,10 @@ export const ui = {
     channelsFooter: "외부 콘텐츠 발행 채널을 모은 연결 노드",
 
     appsPageTitle: "틔운 앱들 | Link Flower",
-    appsPageDescription: "불편함이라는 씨앗에서 시작해 직접 설계하고 운영하는 다섯 가지 앱과 서비스",
+    appsPageDescription: "불편함이라는 씨앗에서 시작해 직접 설계하고 운영하는 앱과 서비스",
     appsKicker: "APPS & SERVICES",
     appsTitle: "틔운 앱들.",
-    appsDescription: ["불편함 하나를 씨앗 삼아 직접 설계하고 운영합니다.", "서로 다른 쓰임으로 피어난 다섯 가지 서비스를 소개합니다."],
+    appsDescription: ["불편함 하나를 씨앗 삼아 직접 설계하고 운영합니다.", "서로 다른 쓰임으로 피어난 서비스들을 소개합니다."],
     appsPrinciplesTitle: "앱을 만드는 세 가지 원칙",
     appsPrinciplesHint: "오래 쓰이기 위한 기본",
     appsPrinciples: [
@@ -168,10 +168,10 @@ export const ui = {
     channelsFooter: "A connection node for external publishing channels",
 
     appsPageTitle: "Apps in Bloom | Link Flower",
-    appsPageDescription: "Five independently designed and operated services, each sprouted from a real need.",
+    appsPageDescription: "Independently designed and operated services, each sprouted from a real need.",
     appsKicker: "APPS & SERVICES",
     appsTitle: "APPS IN BLOOM.",
-    appsDescription: ["Each service begins with a real inconvenience as its seed.", "Here are five services blooming into five different uses."],
+    appsDescription: ["Each service begins with a real inconvenience as its seed.", "Here are the services blooming into different uses."],
     appsPrinciplesTitle: "Three Principles Behind Every App",
     appsPrinciplesHint: "The roots of lasting products",
     appsPrinciples: [
@@ -272,10 +272,10 @@ export const ui = {
     channelsFooter: "外部コンテンツ発信チャンネルをまとめた接続ノード",
 
     appsPageTitle: "芽吹かせたアプリ | Link Flower",
-    appsPageDescription: "一つの不便を種に、自分で設計・運営する五つのアプリとサービス。",
+    appsPageDescription: "一つの不便を種に、自分で設計・運営するアプリとサービス。",
     appsKicker: "APPS & SERVICES",
     appsTitle: "芽吹かせたアプリ。",
-    appsDescription: ["一つの不便を種に、自分で設計し、運営まで続けます。", "それぞれ違う用途へ咲いた五つのサービスを紹介します。"],
+    appsDescription: ["一つの不便を種に、自分で設計し、運営まで続けます。", "それぞれ違う用途へ咲いたサービスを紹介します。"],
     appsPrinciplesTitle: "アプリをつくる三つの原則",
     appsPrinciplesHint: "長く使われるための基本",
     appsPrinciples: [

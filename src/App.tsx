@@ -88,90 +88,80 @@ function RootPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
         </div>
 
         <div className="garden-hero-flower" aria-hidden="true">
-          <svg viewBox="0 0 520 620" role="presentation">
+          <svg viewBox="0 0 520 600" role="presentation">
             <defs>
-              <linearGradient id="petalIvory" x1="0" x2="1" y1="0" y2="1">
-                <stop offset="0" stopColor="#fffdf7" />
-                <stop offset="0.56" stopColor="#f3eadb" />
-                <stop offset="1" stopColor="#dfd0bd" />
+              <radialGradient id="heroPetal" cx="45%" cy="22%" r="88%">
+                <stop offset="0" stopColor="#fffef9" />
+                <stop offset="0.7" stopColor="#f3eadc" />
+                <stop offset="1" stopColor="#d8c5b2" />
+              </radialGradient>
+              <linearGradient id="heroLeaf" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0" stopColor="#8ea080" />
+                <stop offset="0.55" stopColor="#5f795f" />
+                <stop offset="1" stopColor="#365440" />
               </linearGradient>
-              <linearGradient id="petalBlush" x1="0" x2="0.7" y1="0" y2="1">
-                <stop offset="0" stopColor="#f8f0e3" />
-                <stop offset="1" stopColor="#d9c0aa" />
+              <linearGradient id="heroLeafSoft" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0" stopColor="#a9b092" />
+                <stop offset="1" stopColor="#667e61" />
               </linearGradient>
-              <linearGradient id="leafDeep" x1="0" x2="1" y1="0" y2="1">
-                <stop offset="0" stopColor="#82947a" />
-                <stop offset="0.52" stopColor="#59745b" />
-                <stop offset="1" stopColor="#304e3b" />
-              </linearGradient>
-              <linearGradient id="leafLight" x1="0" x2="1" y1="0" y2="1">
-                <stop offset="0" stopColor="#a2aa8b" />
-                <stop offset="1" stopColor="#5e7659" />
-              </linearGradient>
+              <filter id="heroPetalShadow" x="-30%" y="-30%" width="160%" height="170%">
+                <feDropShadow dx="0" dy="7" stdDeviation="6" floodColor="#5e5145" floodOpacity="0.09" />
+              </filter>
             </defs>
 
-            <g className="botanical-stems">
-              <path d="M304 612C303 542 307 473 300 407C292 330 281 251 267 184" />
-              <path d="M298 416C252 388 207 378 153 382" />
-              <path d="M302 478C349 438 392 424 450 428" />
-              <path d="M287 328C330 294 370 282 419 291" />
-              <path d="M279 278C238 255 204 225 183 190" />
-              <path d="M239 249C207 278 170 296 126 296" />
+            <ellipse className="hero-flower-wash" cx="286" cy="294" rx="208" ry="270" />
+            <path className="hero-flower-orbit" d="M87 326C81 188 163 70 286 32C400 58 470 166 462 307" />
+
+            <g className="hero-stems">
+              <path d="M308 584C303 493 307 407 293 326C285 278 278 234 274 190" />
+              <path d="M300 422C248 395 205 352 170 286" />
+              <path d="M305 482C349 443 394 422 457 427" />
+              <path d="M290 350C333 326 367 292 390 255" />
             </g>
 
-            <g className="botanical-leaves">
-              <path fill="url(#leafDeep)" d="M257 389C220 350 169 347 128 377C163 409 211 414 257 389Z" />
-              <path fill="url(#leafLight)" d="M344 444C375 402 426 396 467 420C441 456 394 468 344 444Z" />
-              <path fill="url(#leafDeep)" d="M329 309C357 274 402 267 438 286C416 320 372 331 329 309Z" />
-              <path fill="url(#leafLight)" d="M253 263C219 225 174 222 140 248C168 280 210 286 253 263Z" />
-              <path fill="url(#leafDeep)" d="M210 278C182 284 151 307 109 296C132 269 169 255 210 278Z" />
+            <g className="hero-leaves">
+              <path fill="url(#heroLeaf)" d="M289 392C248 355 193 354 145 388C183 426 241 430 289 392Z" />
+              <path fill="url(#heroLeafSoft)" d="M336 454C370 413 425 409 472 438C441 476 385 482 336 454Z" />
+              <path fill="url(#heroLeaf)" d="M321 326C341 286 382 266 425 276C412 317 370 341 321 326Z" />
+              <path fill="url(#heroLeafSoft)" d="M241 365C208 326 161 315 123 340C149 377 197 389 241 365Z" />
+              <path fill="url(#heroLeaf)" d="M258 472C223 440 178 438 141 464C168 496 215 502 258 472Z" />
             </g>
 
-            <g className="leaf-veins">
-              <path d="M250 385C207 380 168 381 132 378" />
-              <path d="M347 442C389 431 427 424 462 421" />
-              <path d="M332 307C369 298 402 291 434 287" />
-              <path d="M248 260C209 252 175 250 144 249" />
-              <path d="M204 279C169 286 139 292 113 296" />
+            <g className="hero-leaf-veins">
+              <path d="M283 390C235 389 190 389 150 389" />
+              <path d="M341 451C389 442 430 438 467 438" />
+              <path d="M326 323C361 306 394 290 421 278" />
+              <path d="M235 362C194 352 158 345 128 341" />
+              <path d="M253 470C214 467 177 465 145 465" />
             </g>
 
-            <g className="magnolia-petals">
-              <path fill="url(#petalIvory)" d="M266 183C232 151 222 100 250 55C285 77 296 127 266 183Z" />
-              <path fill="url(#petalBlush)" d="M274 181C276 128 307 86 350 83C359 126 327 165 274 181Z" />
-              <path fill="url(#petalIvory)" d="M278 188C320 149 371 150 400 181C376 218 328 219 278 188Z" />
-              <path fill="url(#petalBlush)" d="M276 194C329 190 365 218 360 255C318 263 286 240 276 194Z" />
-              <path fill="url(#petalIvory)" d="M267 197C302 237 296 280 263 297C232 269 236 228 267 197Z" />
-              <path fill="url(#petalBlush)" d="M259 194C244 244 204 266 168 248C173 210 207 187 259 194Z" />
-              <path fill="url(#petalIvory)" d="M258 186C208 207 166 188 158 150C192 128 232 143 258 186Z" />
-              <path fill="url(#petalBlush)" d="M262 181C220 155 211 112 238 83C270 100 280 139 262 181Z" />
+            <g className="hero-flower-petals" filter="url(#heroPetalShadow)">
+              {Array.from({ length: 9 }, (_, index) => <ellipse key={index} cx="274" cy="106" rx="39" ry="91" transform={`rotate(${index * 40} 274 190)`} />)}
             </g>
-
-            <g className="petal-veins">
-              <path d="M268 184C260 137 257 99 251 62" />
-              <path d="M275 184C302 145 326 112 347 88" />
-              <path d="M279 189C322 181 362 181 394 181" />
-              <path d="M275 195C309 215 337 235 355 252" />
-              <path d="M267 198C266 234 264 265 263 291" />
-              <path d="M258 195C226 215 197 231 173 246" />
-              <path d="M257 188C222 175 189 162 162 152" />
-            </g>
-
-            <ellipse className="magnolia-center" cx="268" cy="190" rx="24" ry="20" />
-            <g className="magnolia-stamens">
-              {Array.from({ length: 18 }, (_, index) => {
-                const angle = (index / 18) * Math.PI * 2;
-                const innerX = 268 + Math.cos(angle) * 22;
-                const innerY = 190 + Math.sin(angle) * 18;
-                const outerX = 268 + Math.cos(angle) * 36;
-                const outerY = 190 + Math.sin(angle) * 31;
-                return <g key={index}><path d={`M${innerX} ${innerY}L${outerX} ${outerY}`} /><circle cx={outerX} cy={outerY} r="2.8" /></g>;
+            <g className="hero-petal-veins">
+              {Array.from({ length: 9 }, (_, index) => {
+                const angle = ((index * 40) - 90) * Math.PI / 180;
+                return <path key={index} d={`M${274 + Math.cos(angle) * 30} ${190 + Math.sin(angle) * 30}L${274 + Math.cos(angle) * 96} ${190 + Math.sin(angle) * 96}`} />;
               })}
             </g>
 
-            <g className="magnolia-bud">
-              <path d="M183 192C164 178 157 154 171 137C192 145 200 167 183 192Z" />
-              <path d="M180 193C197 172 214 172 223 185C213 202 196 205 180 193Z" />
-              <path className="bud-sepal" d="M183 194C171 188 163 188 156 192C163 201 172 204 183 194Z" />
+            <circle className="hero-flower-center" cx="274" cy="190" r="31" />
+            <g className="hero-flower-stamens">
+              {Array.from({ length: 22 }, (_, index) => {
+                const angle = (index / 22) * Math.PI * 2;
+                const innerX = 274 + Math.cos(angle) * 26;
+                const innerY = 190 + Math.sin(angle) * 26;
+                const outerX = 274 + Math.cos(angle) * 43;
+                const outerY = 190 + Math.sin(angle) * 43;
+                return <g key={index}><path d={`M${innerX} ${innerY}L${outerX} ${outerY}`} /><circle cx={outerX} cy={outerY} r="2.6" /></g>;
+              })}
+            </g>
+
+            <g className="hero-flower-bud">
+              <path className="bud-stem" d="M171 288C165 267 160 246 160 224" />
+              <ellipse cx="160" cy="210" rx="20" ry="44" transform="rotate(-13 160 210)" />
+              <ellipse cx="176" cy="218" rx="17" ry="38" transform="rotate(24 176 218)" />
+              <path className="bud-sepal" d="M145 242C159 232 174 233 187 246C171 255 156 254 145 242Z" />
             </g>
           </svg>
           <span className="flower-caption">IDEAS → ROOTS → BLOOM</span>
