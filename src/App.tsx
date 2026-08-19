@@ -404,17 +404,14 @@ function DohwajiPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; 
           </div>
         </div>
 
-        <div className="dohwaji-map-demo" aria-label={copy.dohwajiMapPreview}>
-          <div className="map-toolbar"><span>DOHWAJI / SEOUL</span><b>SHARED MAP</b></div>
-          <div className="map-canvas" aria-hidden="true">
-            <i className="road road-one" /><i className="road road-two" /><i className="road road-three" /><i className="road road-four" />
-            <span className="map-block block-one" /><span className="map-block block-two" /><span className="map-block block-three" /><span className="map-block block-four" />
-            <span className="map-pin pin-one">A</span><span className="map-pin pin-two">B</span><span className="map-pin pin-three">C</span>
-            <span className="draw-line line-one" /><span className="draw-line line-two" /><span className="draw-line line-three" />
-            <span className="map-note">{copy.dohwajiMapNote}</span>
+        <figure className="dohwaji-web-shot">
+          <div className="dohwaji-shot-head"><span>DOHWAJI.APP / LIVE WEB</span><b>{copy.appStatus}</b></div>
+          <div className="dohwaji-shot-window">
+            <img src={`${basePath}product-shots/dohwaji-web-home.png`} alt={copy.dohwajiWebShotAlt} />
           </div>
-          <div className="map-sharebar"><span><i />3 {copy.dohwajiPeople}</span><button type="button" tabIndex={-1}>{copy.dohwajiShare}</button></div>
-        </div>
+          <figcaption>{copy.dohwajiWebShotCaption}</figcaption>
+          <i className="dohwaji-shot-tape" aria-hidden="true">ACTUAL WEB</i>
+        </figure>
       </section>
 
       <section className="dohwaji-problem" aria-labelledby="dohwaji-problem-title">
