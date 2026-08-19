@@ -952,7 +952,7 @@ h3 {
 .dohwaji-problem div p { margin: 0 0 20px; color: var(--dh-taupe); font-size: 11px; }
 .dohwaji-problem h2,
 .dohwaji-section-heading h2,
-.dohwaji-final h2 { margin: 0; color: var(--dh-white); font-size: clamp(38px, 5vw, 68px); letter-spacing: -0.075em; line-height: 1.07; }
+.dohwaji-final h2 { margin: 0; color: var(--dh-white); font-size: clamp(38px, 5vw, 68px); letter-spacing: -0.075em; line-height: 1.07; overflow-wrap: break-word; word-break: keep-all; }
 .dohwaji-problem > p { margin: 0; color: var(--dh-gray); font-size: 13px; line-height: 1.9; }
 
 .dohwaji-features,

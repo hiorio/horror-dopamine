@@ -37,19 +37,19 @@ export const productApps: ProductApp[] = [
       ko: {
         displayName: "도화지",
         tagline: "함께 만드는 모임 동선 지도",
-        description: "핀과 메모, 손그림, 실제 이동 경로를 한 장의 지도에 담아 링크로 공유하는 지도 서비스입니다.",
+        description: "친구, 연인, 가족과의 만남과 여행 동선을 한 장의 지도에 쉽게 표현하고, 함께 만들고, 링크로 공유하고 싶다는 필요에서 시작한 지도 서비스입니다.",
         features: ["지도 위 손그림", "모임 동선 설계", "설치 없는 링크 공유"],
       },
       en: {
         displayName: "Dohwaji",
         tagline: "A shared route map for every meetup",
-        description: "Build one map with pins, notes, freehand drawings, and real routes, then share it with a single link.",
+        description: "Dohwaji began with a personal need: an easier way to map, build, and share the routes of meetups and trips with friends, partners, and family.",
         features: ["Draw on the map", "Plan group routes", "Share without installation"],
       },
       ja: {
         displayName: "ドファジ",
         tagline: "みんなで作る集合ルートマップ",
-        description: "ピン、メモ、手描き、実際の移動経路を一枚の地図にまとめ、リンクひとつで共有する地図サービスです。",
+        description: "友人、恋人、家族との待ち合わせや旅行の動線を一枚の地図で簡単に表現し、一緒につくり、リンクで共有したいという必要から始まった地図サービスです。",
         features: ["地図に手描き", "集合ルート設計", "インストール不要の共有"],
       },
     },

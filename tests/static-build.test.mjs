@@ -54,6 +54,7 @@ test("루트와 하위 노드의 정적 페이지가 생성된다", async () => 
   assert.match(javascript, /사용자에게 비용을 받지 않습니다/);
   assert.match(javascript, /필요한 정보에만 접근합니다/);
   assert.match(javascript, /운영하며 계속 고쳐 나갑니다/);
+  assert.match(javascript, /친구, 연인, 가족과 어디서 만나 어디로 이동할지/);
   assert.match(javascript, /다음 모임은 도화지 한 장으로 정리하세요/);
   assert.match(javascript, /apps\/dohwaji/);
   assert.match(javascript, /apps\/timeflower/);
