@@ -323,9 +323,25 @@ function AppsPage({ copy, locale, setLocale }: { copy: Copy; locale: Locale; set
         </aside>
       </section>
 
+      <section className="development-principles" aria-labelledby="app-principles-title">
+        <div className="section-heading development-heading principles-heading">
+          <div><span className="section-index">01</span><h2 id="app-principles-title">{copy.appsPrinciplesTitle}</h2></div>
+          <p>{copy.appsPrinciplesHint.toUpperCase()}</p>
+        </div>
+        <div className="principles-list">
+          {copy.appsPrinciples.map((principle, index) => (
+            <article className="principle-card" key={principle.code}>
+              <div className="principle-meta"><span>{String(index + 1).padStart(2, "0")}</span><small>{principle.code}</small></div>
+              <h3>{principle.title}</h3>
+              <p>{principle.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="app-products development-products" aria-labelledby="app-products-title">
         <div className="section-heading development-heading">
-          <div><span className="section-index">01</span><h2 id="app-products-title">{copy.appsSectionTitle}</h2></div>
+          <div><span className="section-index">02</span><h2 id="app-products-title">{copy.appsSectionTitle}</h2></div>
           <p>{copy.appsSectionHint.toUpperCase()}</p>
         </div>
         <div className="product-catalog">
